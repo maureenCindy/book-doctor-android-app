@@ -37,11 +37,12 @@ public class InitialisationData {
     public static DoctorSchedule[] populateDoctorSchedule() {
         return new DoctorSchedule[] {
                 new DoctorSchedule(100,"Mon",5,6),
-                new DoctorSchedule(100,"Wed",7,9),
-                new DoctorSchedule(100,"Fri",10,12),
+                new DoctorSchedule(100,"Wed",7,8),
+                new DoctorSchedule(100,"Fri",9,10),
                 //DOC2
-                new DoctorSchedule(101,"Mon",9,10),
-                new DoctorSchedule(101,"Tue",11,12)
+                new DoctorSchedule(101,"Sat",11,12),
+                new DoctorSchedule(101,"Sun",13,14),
+                new DoctorSchedule(101,"Tue",15,16)
         };
     }
 

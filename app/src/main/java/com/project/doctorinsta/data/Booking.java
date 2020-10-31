@@ -77,4 +77,17 @@ public class Booking implements Serializable {
     public void setEndTime(int endTime) {
         this.endTime = endTime;
     }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id=" + id +
+                ", patientId=" + patientId +
+                ", doctorId=" + doctorId +
+                ", date=" + date +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", day='" + day + '\'' +
+                '}';
+    }
 }

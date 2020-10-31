@@ -7,7 +7,7 @@
     android:background="#FFFFFF"
     tools:context=".ui.booking.BookActivity">
 
-    <ScrollView
+    <!--<ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,7 +21,7 @@
             <com.github.tlaabs.timetableview.TimetableView
                 android:id="@+id/timetable"
                 app:cell_height="25dp"
-                app:side_cell_width="20dp"
+                app:side_cell_width="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -30,6 +30,22 @@
                 app:header_highlight_type="color"/>
         </LinearLayout>
 
-    </ScrollView>
+    </ScrollView>-->
+    <com.alamkanak.weekview.WeekView
+        android:id="@+id/weekView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:eventTextColor="@android:color/white"
+        app:textSize="12sp"
+        app:hourHeight="60dp"
+        app:headerColumnPadding="8dp"
+        app:headerColumnTextColor="#8f000000"
+        app:headerRowPadding="12dp"
+        app:columnGap="8dp"
+        app:noOfVisibleDays="3"
+        app:headerRowBackgroundColor="#ffefefef"
+        app:dayBackgroundColor="#05000000"
+        app:todayBackgroundColor="#1848adff"
+        app:headerColumnBackground="#ffffffff" />
 
 </RelativeLayout>

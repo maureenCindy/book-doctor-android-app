@@ -44,11 +44,9 @@ public class MyBookingsFragment extends Fragment {
         BookingDao dao = DoctorInstaDatabase.getDatabase(getActivity()).bookingDao();
         Long patientID = sharedPrefs.getLongValue("patientID");
         List<Booking> bookings = dao.findAllByPatientId(patientID);
-        Log.d("booknz from db"," :"+bookings.toString());
         linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         bookingsAdapter = new BookingsAdapter(getActivity(), bookings);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, 5, true));
         recyclerView.setAdapter(bookingsAdapter);
     }
 

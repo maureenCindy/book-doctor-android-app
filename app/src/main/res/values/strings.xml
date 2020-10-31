@@ -34,16 +34,20 @@
     <string name="terms_and_conditions">Terms and Conditions</string>
     <string name="get_support">Contact Support</string>
     <string name="logout">Logout</string>
+    <string name="action_today">Today view</string>
+    <string name="action_day_view">Day view</string>
+    <string name="action_three_day_view">3 day view</string>
+    <string name="action_week_view">Week view</string>
 
-    <string-array name="my_header_title">
-        <item></item>
+    <string-array name="daysOfWeek">
+        <item>default</item>
+        <item>Sun</item>
         <item>Mon</item>
         <item>Tue</item>
         <item>Wed</item>
         <item>Thu</item>
         <item>Fri</item>
         <item>Sat</item>
-        <item>Sun</item>
     </string-array>
 
 

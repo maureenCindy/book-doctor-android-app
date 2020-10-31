@@ -10,6 +10,7 @@ import androidx.room.Update;
 
 import com.project.doctorinsta.data.DoctorSchedule;
 
+import java.util.Collection;
 import java.util.List;
 
 @Dao
@@ -24,8 +25,8 @@ public interface DoctorScheduleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Long save(DoctorSchedule doctorSchedule);
 
-    @Query("select * from `DoctorSchedule` where doctorId=:doctorId")
-    List<DoctorSchedule> findAllByDoctorId(Long doctorId);
+    @Query("select * from `DoctorSchedule` where idNumber=:doctorIdNumber")
+    List<DoctorSchedule> findAllByDoctorIdNumber(int doctorIdNumber);
 
     @Update
     void update(DoctorSchedule doctorSchedule);
@@ -35,4 +36,6 @@ public interface DoctorScheduleDao {
     void delete(DoctorSchedule doctorSchedule);
 
 
+    @Query("select * from `DoctorSchedule`")
+    List<DoctorSchedule> findAll();
 }

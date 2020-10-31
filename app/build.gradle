@@ -56,4 +56,5 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     implementation 'com.github.tlaabs:TimetableView:1.0.3-fx1'
+    compile 'com.github.alamkanak:android-week-view:1.2.6'
 }

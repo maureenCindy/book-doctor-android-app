@@ -102,4 +102,19 @@ public class User implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", userType='" + userType + '\'' +
+                ", address='" + address + '\'' +
+                ", country='" + country + '\'' +
+                ", idNumber=" + idNumber +
+                '}';
+    }
 }

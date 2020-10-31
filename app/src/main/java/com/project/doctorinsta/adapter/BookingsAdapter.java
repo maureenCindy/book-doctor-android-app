@@ -1,6 +1,7 @@
 package com.project.doctorinsta.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.dao.DoctorDao;
+import com.project.doctorinsta.dao.SpecialisationDao;
 import com.project.doctorinsta.dao.UserDao;
 import com.project.doctorinsta.data.Booking;
 import com.project.doctorinsta.data.Doctor;
+import com.project.doctorinsta.data.Specialisation;
 import com.project.doctorinsta.data.User;
+import com.project.doctorinsta.database.Converters;
 import com.project.doctorinsta.database.DoctorInstaDatabase;
 
 import java.util.List;
@@ -45,13 +49,16 @@ public class BookingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         BookingViewHolder bookingViewHolder = (BookingViewHolder)viewHolder;
         final Booking booking = bookings.get(position);
+        Log.d("booking found="," :"+booking.toString());
         DoctorDao doctorDao = DoctorInstaDatabase.getDatabase(context).doctorDao();
+        SpecialisationDao specialtyDao = DoctorInstaDatabase.getDatabase(context).specialisationDao();
         UserDao userDao = DoctorInstaDatabase.getDatabase(context).userDao();
         Doctor doctor = doctorDao.findById(booking.getDoctorId());
+        Specialisation specialty = specialtyDao.findByIdNumber(doctor.getSpecialisationIdNumber());
         User user = userDao.findByIdNumber(doctor.getUserIdNumber());
-        bookingViewHolder.doctorName.setText(user.getFirstname()+" "+user.getLastname());
-        bookingViewHolder.date.setText((CharSequence) booking.getDate());
-        bookingViewHolder.timeSlot.setText(booking.getStartTime()+ "HRS"+ booking.getEndTime()+ "HRS");
+        bookingViewHolder.doctorName.setText(specialty.getName()+": "+user.getFirstname()+" "+user.getLastname());
+        bookingViewHolder.date.setText("Date: "+booking.getDate().toString().substring(0,11));
+        bookingViewHolder.timeSlot.setText("Time:"+booking.getStartTime()+ "00-"+ booking.getEndTime()+ "00 HRS");
     }
 
     @Override

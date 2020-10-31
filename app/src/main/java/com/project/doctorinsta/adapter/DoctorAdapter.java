@@ -50,7 +50,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         DoctorViewHolder doctorViewHolder = (DoctorViewHolder)viewHolder;
         final Doctor doctor = doctors.get(position);
         sharedPrefs =SharedPrefs.getInstance(context);
-        sharedPrefs.setLongValue("doctorId",doctor.getId());
+        sharedPrefs.setLongValue("doctorId", doctor.getId());
+
         UserDao userDao = DoctorInstaDatabase.getDatabase(context).userDao();
         SpecialisationDao specialisationDao = DoctorInstaDatabase.getDatabase(context).specialisationDao();
         User user =userDao.findByIdNumber(doctor.getIdNumber());

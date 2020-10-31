@@ -7,7 +7,7 @@
     android:layout_marginTop="5dp"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
-    app:cardCornerRadius="3dp"
+    app:cardCornerRadius="1dp"
     app:cardElevation="1dp">
 
     <LinearLayout
@@ -27,11 +27,9 @@
                 android:id="@+id/tvDocBooked"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLength="20"
                 android:maxLines="1"
                 android:padding="2dp"
                 android:layout_marginTop="2dp"
-                android:drawablePadding="2dp"
                 android:text="DR. Mary Smith"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
@@ -44,9 +42,9 @@
                 android:layout_marginTop="2dp"
                 android:padding="2dp"
                 android:text="20 Oct 2020"
-                android:textColor="@color/black"
+                android:textColor="@color/cardview_dark_background"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvBookTimeSlot"
@@ -55,10 +53,9 @@
                 android:layout_below="@+id/tvBookDate"
                 android:layout_marginTop="2dp"
                 android:padding="2dp"
-                android:text="900HRS-1000HRS"
+                android:text="900-1000HRS"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
         </RelativeLayout>
 
     </LinearLayout>

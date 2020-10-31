@@ -27,6 +27,8 @@ public class Doctor implements Serializable {
         this.rate = rate;
     }
 
+
+
     public int getIdNumber() {
         return idNumber;
     }
@@ -73,5 +75,17 @@ public class Doctor implements Serializable {
 
     public void setRate(String rate) {
         this.rate = rate;
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                ", userIdNumber=" + userIdNumber +
+                ", gender='" + gender + '\'' +
+                ", specialisationIdNumber=" + specialisationIdNumber +
+                ", rate='" + rate + '\'' +
+                ", idNumber=" + idNumber +
+                '}';
     }
 }

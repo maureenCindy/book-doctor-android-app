@@ -19,8 +19,8 @@ public class DoctorSchedule implements Serializable {
     public DoctorSchedule() {
     }
 
-    public DoctorSchedule(int doctorId, String dayOfWeek, int startTime, int endTime) {
-        this.idNumber = doctorId;
+    public DoctorSchedule(int doctorIdNumber, String dayOfWeek, int startTime, int endTime) {
+        this.idNumber = doctorIdNumber;
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -72,5 +72,17 @@ public class DoctorSchedule implements Serializable {
 
     public void setEndTime(int endTime) {
         this.endTime = endTime;
+    }
+
+    @Override
+    public String toString() {
+        return "DoctorSchedule{" +
+                "id=" + id +
+                ", doctorId='" + doctorId + '\'' +
+                ", dayOfWeek='" + dayOfWeek + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", idNumber=" + idNumber +
+                '}';
     }
 }

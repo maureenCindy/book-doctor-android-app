@@ -22,7 +22,7 @@ import com.project.doctorinsta.data.User;
 
 
 @Database(entities = {User.class, Specialisation.class, Patient.class, Doctor.class,
-        DoctorSchedule.class, Booking.class}, version = 5)
+        DoctorSchedule.class, Booking.class}, version = 8)
 @TypeConverters({Converters.class})
 public abstract class DoctorInstaDatabase extends RoomDatabase {
 
