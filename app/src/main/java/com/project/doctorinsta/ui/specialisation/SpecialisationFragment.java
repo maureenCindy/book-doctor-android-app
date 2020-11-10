@@ -14,10 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.adapter.SpecialityAdapter;
-import com.project.doctorinsta.dao.SpecialisationDao;
 import com.project.doctorinsta.data.Specialisation;
-import com.project.doctorinsta.database.DoctorInstaDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpecialisationFragment extends Fragment {
@@ -36,8 +35,7 @@ public class SpecialisationFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        SpecialisationDao dao = DoctorInstaDatabase.getDatabase(getActivity()).specialisationDao();
-        List<Specialisation> specialisations = dao.findAll();
+        List<Specialisation> specialisations = new ArrayList<>();
         Log.d("spec from db"," :"+specialisations.toString());
         linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);

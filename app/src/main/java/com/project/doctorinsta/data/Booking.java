@@ -1,93 +1,54 @@
 package com.project.doctorinsta.data;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-import androidx.room.TypeConverters;
-
-import com.project.doctorinsta.database.Converters;
-
 import java.io.Serializable;
-import java.util.Date;
 
-@Entity
+
 public class Booking implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    public Long id;
-    private Long patientId;
-    private Long doctorId;
-    @TypeConverters(Converters.class)
-    private Date date;
-    private int startTime;
-    private int endTime;
-    private String day;
+    private String id;
+    private String patient;
+    private String scheduleID;
+    private String status;
 
-    public String getDay() {
-        return day;
+    public Booking() {
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public Booking(String id, String patient, String scheduleID, String status) {
+        this.id = id;
+        this.patient = patient;
+        this.scheduleID = scheduleID;
+        this.status = status;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Long getPatientId() {
-        return patientId;
+    public String getPatient() {
+        return patient;
     }
 
-    public void setPatientId(Long patientId) {
-        this.patientId = patientId;
+    public void setPatient(String patient) {
+        this.patient = patient;
     }
 
-    public Long getDoctorId() {
-        return doctorId;
+    public String getScheduleID() {
+        return scheduleID;
     }
 
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
+    public void setScheduleID(String scheduleID) {
+        this.scheduleID = scheduleID;
     }
 
-    public Date getDate() {
-        return date;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(int startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(int endTime) {
-        this.endTime = endTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "id=" + id +
-                ", patientId=" + patientId +
-                ", doctorId=" + doctorId +
-                ", date=" + date +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", day='" + day + '\'' +
-                '}';
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

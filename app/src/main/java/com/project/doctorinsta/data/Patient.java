@@ -1,48 +1,92 @@
 package com.project.doctorinsta.data;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+public class Patient {
 
-import java.io.Serializable;
+    private String phone;
+    private String email;
+    private String password;
+    private String firstname;
+    private String lastname;
+    private String address;
+    private String country;
+    private String city;
 
-@Entity
-public class Patient implements Serializable {
-
-    @PrimaryKey(autoGenerate = true)
-    public Long id;
-    private Long userId;
-    private int age;
-    private String gender;
-
-    public Long getId() {
-        return id;
+    public Patient() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Patient(String phone, String email, String password, String firstname, String lastname,
+                   String address, String country, String city) {
+        this.phone=phone;
+        this.email = email;
+        this.password = password;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.country = country;
+        this.city = city;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public int getAge() {
-        return age;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getGender() {
-        return gender;
+    public String getPassword() {
+        return password;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "521948631917",
+    "firebase_url": "https://insta-doc-49088.firebaseio.com",
+    "project_id": "insta-doc-49088",
+    "storage_bucket": "insta-doc-49088.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521948631917:android:24f5396ce0ce4c902d8064",
+        "android_client_info": {
+          "package_name": "com.project.doctorinsta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521948631917-oni9qemochqi4sfps9avmu879od1jh9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvVCsTaiSz1V-UWySRy5wGFCzLmerEHbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521948631917-oni9qemochqi4sfps9avmu879od1jh9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,72 +1,43 @@
 package com.project.doctorinsta.data;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 import java.io.Serializable;
 
-@Entity
 public class Doctor implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    public Long id;
-    private int userIdNumber;
-    private String gender;
-    private int specialisationIdNumber;
+    private String speciality;
     private String rate;
-    private int idNumber;
+    private String firstname;
+    private String lastname;
+    private String phone;
+    private String email;
+    private String password;
+    private String country;
+    private String city;
+    private String address;
 
     public Doctor() {
     }
 
-    public Doctor(int idNumber, String gender, int specialisationIdNumber, String rate) {
-        this.idNumber =idNumber;
-        this.userIdNumber=idNumber;
-        this.gender = gender;
-        this.specialisationIdNumber = specialisationIdNumber;
+    public Doctor(String speciality, String rate, String firstname, String lastname, String phone,
+                  String email, String password, String country, String city, String address) {
+        this.speciality = speciality;
         this.rate = rate;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
+        this.country = country;
+        this.city = city;
+        this.address = address;
     }
 
-
-
-    public int getIdNumber() {
-        return idNumber;
+    public String getSpeciality() {
+        return speciality;
     }
 
-    public void setIdNumber(int idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getUserIdNumber() {
-        return userIdNumber;
-    }
-
-    public void setUserIdNumber(int userIdNumber) {
-        this.userIdNumber = userIdNumber;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public int getSpecialisationIdNumber() {
-        return specialisationIdNumber;
-    }
-
-    public void setSpecialisationIdNumber(int specialisationIdNumber) {
-        this.specialisationIdNumber = specialisationIdNumber;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
 
     public String getRate() {
@@ -77,15 +48,67 @@ public class Doctor implements Serializable {
         this.rate = rate;
     }
 
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "id=" + id +
-                ", userIdNumber=" + userIdNumber +
-                ", gender='" + gender + '\'' +
-                ", specialisationIdNumber=" + specialisationIdNumber +
-                ", rate='" + rate + '\'' +
-                ", idNumber=" + idNumber +
-                '}';
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

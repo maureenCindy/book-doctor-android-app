@@ -1,7 +1,6 @@
 package com.project.doctorinsta.ui.booking;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.SharedPrefs;
 import com.project.doctorinsta.adapter.BookingsAdapter;
-import com.project.doctorinsta.dao.BookingDao;
 import com.project.doctorinsta.data.Booking;
-import com.project.doctorinsta.database.DoctorInstaDatabase;
-import com.project.doctorinsta.ui.specialisation.GridSpacingItemDecoration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -41,9 +38,8 @@ public class MyBookingsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         sharedPrefs=SharedPrefs.getInstance(getActivity());
-        BookingDao dao = DoctorInstaDatabase.getDatabase(getActivity()).bookingDao();
         Long patientID = sharedPrefs.getLongValue("patientID");
-        List<Booking> bookings = dao.findAllByPatientId(patientID);
+        List<Booking> bookings = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         bookingsAdapter = new BookingsAdapter(getActivity(), bookings);

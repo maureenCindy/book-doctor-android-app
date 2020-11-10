@@ -14,11 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.adapter.DoctorAdapter;
-import com.project.doctorinsta.dao.DoctorDao;
 import com.project.doctorinsta.data.Doctor;
-import com.project.doctorinsta.database.DoctorInstaDatabase;
 import com.project.doctorinsta.ui.specialisation.GridSpacingItemDecoration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,8 +37,7 @@ public class DoctorsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        DoctorDao dao = DoctorInstaDatabase.getDatabase(getActivity()).doctorDao();
-        List<Doctor> doctors = dao.findAll();
+        List<Doctor> doctors = new ArrayList<>();
         Log.d("spec from db"," :"+doctors.toString());
         linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);

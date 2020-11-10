@@ -49,7 +49,6 @@ public class SpecialityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         specialisationViewHolder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), PatientDashboardActivity.class);
             intent.putExtra("fragmentName", "Doctors");
-            intent.putExtra("specialisationIdNumber", specialisation.getIdNumber());
             v.getContext().startActivity(intent);
         });
         ColorGenerator generator = ColorGenerator.MATERIAL;

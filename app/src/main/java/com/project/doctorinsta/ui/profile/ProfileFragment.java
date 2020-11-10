@@ -12,9 +12,6 @@ import androidx.fragment.app.Fragment;
 
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.SharedPrefs;
-import com.project.doctorinsta.dao.UserDao;
-import com.project.doctorinsta.data.User;
-import com.project.doctorinsta.database.DoctorInstaDatabase;
 import com.project.doctorinsta.ui.auth.LoginActivity;
 
 
@@ -26,10 +23,8 @@ public class ProfileFragment extends Fragment {
         TextView fullname= root.findViewById(R.id.fullNameTextView);
         TextView email= root.findViewById(R.id.emailAddressTextView);
         SharedPrefs sharedPrefs = SharedPrefs.getInstance(getActivity());
-        UserDao userDao = DoctorInstaDatabase.getDatabase(getActivity()).userDao();
-        User user =userDao.findByEmail(sharedPrefs.getValue("email"));
-        fullname.setText(user.getFirstname()+" "+user.getLastname());
-        email.setText(user.getEmail());
+        fullname.setText("dummy dummy");
+        email.setText("dummy@test.com");
         root.findViewById(R.id.logoutTextView).setOnClickListener(v->{
             sharedPrefs.clearAllPreferences();
             startActivity(new Intent(getActivity(), LoginActivity.class));

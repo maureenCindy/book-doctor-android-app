@@ -1,42 +1,28 @@
 package com.project.doctorinsta.data;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 import java.io.Serializable;
 
-@Entity
 public class Specialisation implements Serializable {
 
-    @PrimaryKey(autoGenerate = true)
-    public Long id;
+   private String number;
     private String name;
     private String description;
-    private int idNumber;
 
     public Specialisation() {
     }
 
-    public Specialisation(int idNumber, String name, String description) {
+    public Specialisation(String number, String name, String description) {
+        this.number = number;
         this.name = name;
         this.description = description;
-        this.idNumber=idNumber;
     }
 
-    public int getIdNumber() {
-        return idNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public void setIdNumber(int idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getName() {
@@ -53,14 +39,5 @@ public class Specialisation implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Specialisation{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
     }
 }

@@ -12,12 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.SharedPrefs;
-import com.project.doctorinsta.dao.SpecialisationDao;
-import com.project.doctorinsta.dao.UserDao;
 import com.project.doctorinsta.data.Doctor;
-import com.project.doctorinsta.data.Specialisation;
-import com.project.doctorinsta.data.User;
-import com.project.doctorinsta.database.DoctorInstaDatabase;
 import com.project.doctorinsta.ui.booking.BookActivity;
 
 import java.util.List;
@@ -49,15 +44,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         DoctorViewHolder doctorViewHolder = (DoctorViewHolder)viewHolder;
         final Doctor doctor = doctors.get(position);
-        sharedPrefs =SharedPrefs.getInstance(context);
-        sharedPrefs.setLongValue("doctorId", doctor.getId());
-
-        UserDao userDao = DoctorInstaDatabase.getDatabase(context).userDao();
-        SpecialisationDao specialisationDao = DoctorInstaDatabase.getDatabase(context).specialisationDao();
-        User user =userDao.findByIdNumber(doctor.getIdNumber());
-        Specialisation specialisation = specialisationDao.findByIdNumber(doctor.getSpecialisationIdNumber());
-        doctorViewHolder.name.setText(user.getFirstname() + " "+ user.getLastname());
-        doctorViewHolder.speciality.setText(specialisation.getName());
+        doctorViewHolder.name.setText(doctor.getFirstname() + " "+ doctor.getLastname());
+        doctorViewHolder.speciality.setText(doctor.getSpeciality());
         doctorViewHolder.rate.setText(doctor.getRate());
         doctorViewHolder.bookLink.setOnClickListener(v->{
             Intent intent = new Intent(context, BookActivity.class);
