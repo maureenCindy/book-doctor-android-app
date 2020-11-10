@@ -5,8 +5,8 @@
 
         <item
             android:id="@+id/nav_specialisations"
-            android:icon="@drawable/ic_view_more"
-            android:title="@string/menu_specialisations" />
+            android:icon="@drawable/ic_search"
+            android:title="@string/search" />
         <item
             android:id="@+id/nav_doctors"
             android:icon="@drawable/ic_person"

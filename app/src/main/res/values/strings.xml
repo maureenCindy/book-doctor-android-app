@@ -19,7 +19,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="menu_specialisations">Specialities</string>
+    <string name="menu_specialisations">Specialisations</string>
     <string name="menu_doctors">Doctors</string>
     <string name="menu_profile">Profile</string>
     <string name="drawer_open">Open navigation drawer</string>
@@ -38,6 +38,7 @@
     <string name="action_day_view">Day view</string>
     <string name="action_three_day_view">3 day view</string>
     <string name="action_week_view">Week view</string>
+    <string name="search">Search</string>
 
     <string-array name="daysOfWeek">
         <item>default</item>
