@@ -2,6 +2,7 @@ package com.project.doctorinsta.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.project.doctorinsta.PatientDashboardActivity;
 import com.project.doctorinsta.R;
+import com.project.doctorinsta.SharedPrefs;
 import com.project.doctorinsta.data.Specialisation;
 
 import java.util.List;
@@ -47,6 +49,8 @@ public class SpecialityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         final Specialisation specialisation = specialisations.get(position);
         specialisationViewHolder.name.setText(specialisation.getName());
         specialisationViewHolder.itemView.setOnClickListener(v -> {
+            SharedPrefs sharedPrefs = SharedPrefs.getInstance(context);
+            sharedPrefs.setLongValue("selectedSpecialityNumber",specialisation.getNumber());
             Intent intent = new Intent(v.getContext(), PatientDashboardActivity.class);
             intent.putExtra("fragmentName", "Doctors");
             v.getContext().startActivity(intent);
@@ -61,6 +65,7 @@ public class SpecialityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 .buildRound(specialisations.get(position).getName().substring(0, 1), color1);
         specialisationViewHolder.imageView.setImageDrawable(drawable);
     }
+
 
     @Override
     public int getItemCount() {

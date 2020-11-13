@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.project.doctorinsta.R;
+import com.project.doctorinsta.SharedPrefs;
 import com.project.doctorinsta.adapter.SpecialityAdapter;
 import com.project.doctorinsta.data.Specialisation;
 
@@ -56,11 +57,12 @@ public class SpecialisationFragment extends Fragment {
                     Log.d("found specialisation",":"+snapshot.toString());
                     String nameFromDb =snapshot.child("name").getValue(String.class);
                     String descFromDb =snapshot.child("description").getValue(String.class);
-                    Specialisation specialisation = new Specialisation();
-                    specialisation.setName(nameFromDb);
-                    specialisation.setDescription(descFromDb);
+                    Long idFromDb =snapshot.child("id").getValue(Long.class);
+                    Specialisation specialisation = new Specialisation(idFromDb,nameFromDb,descFromDb);
                     specialisations.add(specialisation);
                 }
+                SharedPrefs sharedPrefs = SharedPrefs.getInstance(getActivity());
+                sharedPrefs.setSpecialities("specialities",specialisations);
                 Log.d("found specialisations",":"+specialisations.size()+" for adapter");
                 linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                 recyclerView.setLayoutManager(linearLayoutManager);

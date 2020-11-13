@@ -4,24 +4,24 @@ import java.io.Serializable;
 
 public class Specialisation implements Serializable {
 
-   private String number;
+   private Long number;
     private String name;
     private String description;
 
     public Specialisation() {
     }
 
-    public Specialisation(String number, String name, String description) {
+    public Specialisation(Long number, String name, String description) {
         this.number = number;
         this.name = name;
         this.description = description;
     }
 
-    public String getNumber() {
+    public Long getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 

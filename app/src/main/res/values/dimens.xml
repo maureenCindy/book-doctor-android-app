@@ -5,4 +5,13 @@
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="small_text_1">12sp</dimen>
+    <dimen name="small_text_2">10sp</dimen>
+    <dimen name="tab_height">30dp</dimen>
+    <dimen name="test_mtrl_calendar_day_cornerSize">52dp</dimen>
+    <dimen name="appbar_img_size">15dp</dimen>
+    <dimen name="appbar_text1_size">12sp</dimen>
+    <dimen name="appbar_text2_size">10sp</dimen>
 </resources>

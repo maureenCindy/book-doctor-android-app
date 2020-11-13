@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class Doctor implements Serializable {
 
-    private String speciality;
+    private Long specialityIdNumber;
+    private Long idNumber;
     private String rate;
     private String firstname;
     private String lastname;
@@ -14,13 +15,14 @@ public class Doctor implements Serializable {
     private String country;
     private String city;
     private String address;
-
+    private String experience;
     public Doctor() {
     }
 
-    public Doctor(String speciality, String rate, String firstname, String lastname, String phone,
+    public Doctor(String experience,Long idNumber, Long specialityIdNumber, String rate, String firstname, String lastname, String phone,
                   String email, String password, String country, String city, String address) {
-        this.speciality = speciality;
+       this.experience=experience;
+        this.specialityIdNumber = specialityIdNumber;
         this.rate = rate;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -30,14 +32,31 @@ public class Doctor implements Serializable {
         this.country = country;
         this.city = city;
         this.address = address;
+        this.idNumber=idNumber;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public String getExperience() {
+        return experience;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    public Long getSpecialityIdNumber() {
+        return specialityIdNumber;
+    }
+
+    public void setSpecialityIdNumber(Long specialityIdNumber) {
+        this.specialityIdNumber = specialityIdNumber;
+    }
+
+    public Long getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(Long idNumber) {
+        this.idNumber = idNumber;
     }
 
     public String getRate() {

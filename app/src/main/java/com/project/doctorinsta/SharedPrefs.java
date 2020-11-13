@@ -4,6 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.project.doctorinsta.data.Doctor;
+import com.project.doctorinsta.data.Patient;
+import com.project.doctorinsta.data.Specialisation;
+
+import java.lang.reflect.Type;
+import java.util.List;
+
 public class SharedPrefs {
 
     public static SharedPreferences sharedPreferences;
@@ -70,6 +79,51 @@ public class SharedPrefs {
     public void setBooleanValue(String Tag, boolean token) {
         prefsEditor.putBoolean(Tag, token);
         prefsEditor.commit();
+    }
+
+    public void setPatient( String tag,Patient patient) {
+        Gson gson = new Gson();
+        String hashMapString = gson.toJson(patient);
+        prefsEditor.putString(tag, hashMapString);
+        prefsEditor.apply();
+    }
+
+    public Patient getPatient(String tag) {
+            Gson gson = new Gson();
+            String storedHashMapString = sharedPreferences.getString(tag, "");
+            Type type = new TypeToken<Patient>() {
+            }.getType();
+            return gson.fromJson(storedHashMapString, type);
+    }
+
+    public void setDoctor(String tag, Doctor doctor) {
+        Gson gson = new Gson();
+        String hashMapString = gson.toJson(doctor);
+        prefsEditor.putString(tag, hashMapString);
+        prefsEditor.apply();
+    }
+
+    public Doctor getDoctor(String tag) {
+        Gson gson = new Gson();
+        String storedHashMapString = sharedPreferences.getString(tag, "");
+        Type type = new TypeToken<Doctor>() {
+        }.getType();
+        return gson.fromJson(storedHashMapString, type);
+    }
+
+    public void setSpecialities(String tag, List<Specialisation> specialisationList) {
+        Gson gson = new Gson();
+        String hashMapString = gson.toJson(specialisationList);
+        prefsEditor.putString(tag, hashMapString);
+        prefsEditor.apply();
+    }
+
+    public List<Specialisation> getSpecialities(String tag) {
+        Gson gson = new Gson();
+        String storedHashMapString = sharedPreferences.getString(tag, "");
+        Type type = new TypeToken<List<Specialisation>>() {
+        }.getType();
+        return gson.fromJson(storedHashMapString, type);
     }
 
 

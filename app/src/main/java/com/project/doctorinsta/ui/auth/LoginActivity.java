@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.project.doctorinsta.PatientDashboardActivity;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.SharedPrefs;
+import com.project.doctorinsta.data.Patient;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPrefs =SharedPrefs.getInstance(this);
-        Toolbar toolbar= findViewById(R.id.toolbar);
+        getSupportActionBar().setTitle("Login");
         firebaseAuth= FirebaseAuth.getInstance();
         setContentView(R.layout.activity_login);
         username = findViewById(R.id.etUsername);
@@ -79,13 +80,11 @@ public class LoginActivity extends AppCompatActivity {
                         String countryFromDb =snapshot.child(username).child("country").getValue(String.class);
                         String cityFromDb =snapshot.child(username).child("city").getValue(String.class);
                         String phoneFromDb =snapshot.child(username).child("phone").getValue(String.class);
-                        sharedPrefs.setValue("phone", phoneFromDb);
-                        sharedPrefs.setValue("name", nameFromDb);
-                        sharedPrefs.setValue("surname", surnameFromDb);
-                        sharedPrefs.setValue("email", emailFromDb);
-                        sharedPrefs.setValue("country", countryFromDb);
-                        sharedPrefs.setValue("city", cityFromDb);
-                        sharedPrefs.setValue("address",addressFromDb);
+                        Patient patient = new Patient( phoneFromDb,  emailFromDb,  "password",  nameFromDb,  surnameFromDb,
+                                 addressFromDb,  countryFromDb,  cityFromDb);
+                        sharedPrefs.setPatient("loggedInPatient",patient);
+                        sharedPrefs.setBooleanValue("isLoggedIn",true);
+                        sharedPrefs.setValue("userType","patient");
                         if (materialDialog.isShowing()) {
                             materialDialog.dismiss();
                         }

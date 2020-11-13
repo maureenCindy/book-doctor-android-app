@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF"
-    tools:context=".ui.auth.LoginActivity">
+    tools:context=".ui.home.HomeActivity">
+
 
 
     <ScrollView
@@ -28,54 +29,28 @@
                 android:layout_marginTop="20dp"
                 android:src="@drawable/logo_image"/>
 
-            <EditText
-                android:id="@+id/etUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="15dp"
-                android:padding="10dp"
-                android:drawableLeft="@drawable/ic_phone"
-                android:hint="Phone Number"
-                android:text=""
-                android:inputType="phone"
-                android:background="#FFFFFF"
-                android:layout_marginTop="25dp"
-                android:maxLines="1"
-                android:lines="1"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#4b000000"/>
 
-
-            <EditText
-                android:id="@+id/etPassword"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="15dp"
-                android:padding="10dp"
-                android:drawableLeft="@drawable/ic_lock"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:text=""
-                android:background="#FFFFFF"
-                android:layout_marginTop="10dp"
-                android:maxLines="1"
-                android:lines="1" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#4b000000"/>
-
+                android:layout_marginTop="24dp"
+                android:text="Lets get started"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="16dp"/>
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnDoctor"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
-                android:text="Sign in"
+                android:text="Doctor?"
                 android:textSize="18sp"
                 android:drawablePadding="-15sp"
                 android:paddingRight="16dp"
@@ -87,17 +62,21 @@
                 android:background="@drawable/ic_round_corner_button"/>
 
 
-            <TextView
-                android:id="@+id/tvRegister"
+            <Button
+                android:id="@+id/btnPatient"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Register account"
-                android:textSize="16sp"
-                android:padding="8dp"
-                android:textColor="#6175f5"
-                android:textStyle="normal"/>
-
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:text="Patient?"
+                android:textSize="18sp"
+                android:drawablePadding="-15sp"
+                android:paddingRight="16dp"
+                android:textColor="#FFFFFF"
+                android:elevation="15dp"
+                android:layout_marginBottom="10dp"
+                android:textAllCaps="true"
+                android:drawableRight="@drawable/ic_arrow"
+                android:background="@drawable/ic_round_corner_button"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

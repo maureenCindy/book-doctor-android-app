@@ -38,7 +38,6 @@ public class MyBookingsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         sharedPrefs=SharedPrefs.getInstance(getActivity());
-        Long patientID = sharedPrefs.getLongValue("patientID");
         List<Booking> bookings = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
