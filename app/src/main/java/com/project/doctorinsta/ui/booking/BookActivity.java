@@ -45,6 +45,11 @@ public class BookActivity extends AppCompatActivity {
                             MakeBookingFragment.newInstance("", "")).commit();
                     getSupportActionBar().setTitle("Make Booking");
                     break;
+                case "My Bookings":
+                    getSupportFragmentManager().beginTransaction().replace(R.id.bookingsFragmentContainer,
+                            MyBookingsFragment.newInstance("", "")).commit();
+                    getSupportActionBar().setTitle("My Bookings");
+                    break;
                 default:
                     getSupportFragmentManager().beginTransaction().replace(R.id.bookingsFragmentContainer,
                             MakeBookingFragment.newInstance("", "")).commit();

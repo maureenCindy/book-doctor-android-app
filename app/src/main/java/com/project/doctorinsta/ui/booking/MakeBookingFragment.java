@@ -57,7 +57,6 @@ public class MakeBookingFragment extends Fragment {
     private SharedPrefs sharedPrefs;
 
     private Doctor doctor;
-    private List<Schedule> timeSlots = new ArrayList<>();
     private static final String DOCTORID = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -116,6 +115,7 @@ public class MakeBookingFragment extends Fragment {
                 scheduleDbList.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        List<Schedule> timeSlots = new ArrayList<>();
                         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                             Log.d("found schedule{}",childSnapshot.toString());
                             Long dbDoc = childSnapshot.child("doctorIdNumber").getValue(Long.class);
@@ -130,7 +130,8 @@ public class MakeBookingFragment extends Fragment {
                                     day==Integer.parseInt(dBdate.substring(0,2))){
                                 String startTime = childSnapshot.child("startTime").getValue(String.class);
                                 String endTime = childSnapshot.child("endTime").getValue(String.class);
-                                Schedule schedule =new Schedule( doctor.getIdNumber(), dBdate, startTime, endTime, availability);
+                                Long id = childSnapshot.child("id").getValue(Long.class);
+                                Schedule schedule =new Schedule( id,doctor.getIdNumber(), dBdate, startTime, endTime, availability);
                                 timeSlots.add(schedule);
                             }
                         }

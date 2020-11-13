@@ -13,22 +13,19 @@
         android:layout_height="30dp"
         android:background="@color/cardview_light_background"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="3dp">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/cardview_light_background"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="16dp">
+            android:layout_gravity="center_horizontal">
 
         <TextView
             android:id="@+id/time_from"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:textSize="12dp"
-            android:textStyle="bold"
             android:textColor="@color/grey"
             android:text="08:00AM"/>
 
@@ -36,9 +33,7 @@
             android:id="@+id/seperator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_toRightOf="@id/time_from"
-            android:textStyle="bold"
             android:textSize="12dp"
             android:textColor="@color/grey"
             android:text=" - " />
@@ -47,9 +42,7 @@
             android:id="@+id/time_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_toRightOf="@id/seperator"
-            android:textStyle="bold"
             android:textSize="12dp"
             android:textColor="@color/grey"
             android:text="12:00AM"/>

@@ -1,6 +1,7 @@
 package com.project.doctorinsta.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,17 +13,35 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.project.doctorinsta.PatientDashboardActivity;
 import com.project.doctorinsta.R;
+import com.project.doctorinsta.SharedPrefs;
 import com.project.doctorinsta.data.Booking;
+import com.project.doctorinsta.data.Patient;
 import com.project.doctorinsta.data.Schedule;
+import com.project.doctorinsta.ui.auth.LoginActivity;
+import com.project.doctorinsta.ui.auth.RegisterActivity;
 import com.project.doctorinsta.ui.booking.BookActivity;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 public class SlotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final List<Schedule> slots;
     private final Context context;
     private LayoutInflater layoutInflater;
+    MaterialDialog materialDialog;
 
     public SlotAdapter(Context context, List<Schedule> items) {
         this.slots = items;
@@ -49,10 +68,56 @@ public class SlotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         slotViewHolder.start.setText(slot.getStartTime());
         slotViewHolder.end.setText(slot.getEndTime());
         slotViewHolder.itemView.setOnClickListener(v->{
-            //todo
-            /*Intent intent = new Intent(context, ConfirmBooking.class);
-            v.getContext().startActivity(intent);*/
-            Toast.makeText(context,"Confirm booking", Toast.LENGTH_LONG).show();
+            materialDialog = new MaterialDialog.Builder(context)
+                    .title("Booking Confirmation")
+                     .cancelable(true)
+                    .content("On the "+slot.getDate()+" between "+slot.getStartTime()+"-"+slot.getEndTime())
+                    .positiveText("Confirm")
+                    .negativeText("Cancel")
+                    .onPositive((dialog, which) -> {
+                        //todo save booking
+                        MaterialDialog internalMd =new MaterialDialog.Builder(context)
+                                .title("Saving booking")
+                                .content("Please wait ...")
+                                .progress(true, 0).show();
+                        //   saving  new booking;
+                        DatabaseReference dbBookingsRef = FirebaseDatabase.getInstance().getReference("bookings");
+                        SharedPrefs sharedPrefs = SharedPrefs.getInstance(v.getContext());
+                        Patient patient = sharedPrefs.getPatient("loggedInPatient");
+                        final Booking booking = new Booking(patient.getPhone(),slot.getId(),"open");
+                        dbBookingsRef.child(String.valueOf(Calendar.getInstance().getTimeInMillis())).setValue(booking);
+                        //update schedule to closed
+                        DatabaseReference dbSchedulesRef = FirebaseDatabase.getInstance().getReference("schedules");
+                        Query query = dbSchedulesRef.orderByChild("doctorIdNumber").equalTo(slot.getDoctorIdNumber());
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    Log.d("exists",":true");
+                                    Long id = snapshot.child(String.valueOf(slot.getDoctorIdNumber())).child("id").getValue(Long.class);
+                                    if(id!=null && id.equals(slot.getId())){
+                                        Log.d("found",":true");
+                                        snapshot.child(String.valueOf(slot.getDoctorIdNumber())).child("status").getRef().setValue("closed");
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                            }
+                        });
+                        if (internalMd.isShowing()) {
+                            internalMd.dismiss();
+                        }
+                        Intent intent = new Intent(v.getContext(), PatientDashboardActivity.class);
+                        intent.putExtra("fragmentName", "MyBookings");
+                        v.getContext().startActivity(intent);
+                    })
+                    .onNegative((dialog, which) -> {
+                        Toast.makeText(v.getContext(),"Booking cancelled", Toast.LENGTH_LONG).show();
+                    })
+                    .show();
         });
     }
 

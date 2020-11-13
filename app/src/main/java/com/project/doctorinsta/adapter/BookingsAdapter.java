@@ -12,15 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.data.Booking;
+import com.project.doctorinsta.data.BookingInfo;
 
 import java.util.List;
 
 public class BookingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private final List<Booking> bookings;
+    private final List<BookingInfo> bookings;
     private final Context context;
     private LayoutInflater layoutInflater;
 
-    public BookingsAdapter(Context context, List<Booking> items) {
+    public BookingsAdapter(Context context, List<BookingInfo> items) {
         this.bookings = items;
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
@@ -40,10 +41,13 @@ public class BookingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         BookingViewHolder bookingViewHolder = (BookingViewHolder)viewHolder;
-        final Booking booking = bookings.get(position);
+        final BookingInfo booking = bookings.get(position);
         Log.d("booking found="," :"+booking.toString());
-        bookingViewHolder.date.setText("Date: dummy ");
-        bookingViewHolder.timeSlot.setText("Time:09"+ "00-"+ "1200 HRS");
+        bookingViewHolder.doctorName.setText(booking.getDoctor());
+        bookingViewHolder.doctorProf.setText(booking.getSpecialty());
+        bookingViewHolder.date.setText(booking.getDate());
+        bookingViewHolder.timeSlot.setText(booking.getStart()+"-"+booking.getEnd());
+        bookingViewHolder.address.setText(booking.getAddress());
     }
 
     @Override
@@ -53,13 +57,17 @@ public class BookingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public static class BookingViewHolder extends RecyclerView.ViewHolder {
         TextView doctorName;
+        TextView doctorProf;
         TextView date;
         TextView timeSlot;
+        TextView address;
         public BookingViewHolder(View view) {
             super(view);
             doctorName= view.findViewById(R.id.tvDocBooked);
+            doctorProf= view.findViewById(R.id.tvDocSpecialty);
             date= view.findViewById(R.id.tvBookDate);
-            timeSlot= view.findViewById(R.id.tvBookTimeSlot);
+            timeSlot= view.findViewById(R.id.tvBookedTimeSlot);
+            address= view.findViewById(R.id.tvDocAddress);
         }
     }
 

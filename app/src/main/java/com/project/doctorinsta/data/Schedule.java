@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Schedule implements Serializable {
 
+    private Long id;
     private Long doctorIdNumber;
     private String date;
     private String startTime;
@@ -13,7 +14,8 @@ public class Schedule implements Serializable {
     public Schedule() {
     }
 
-    public Schedule( Long doctorIdNumber, String date, String startTime, String endTime, String status) {
+    public Schedule(Long id, Long doctorIdNumber, String date, String startTime, String endTime, String status) {
+        this.id = id;
         this.doctorIdNumber = doctorIdNumber;
         this.date = date;
         this.startTime = startTime;
@@ -21,6 +23,13 @@ public class Schedule implements Serializable {
         this.status = status;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getDoctorIdNumber() {
         return doctorIdNumber;
@@ -60,5 +69,17 @@ public class Schedule implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Schedule{" +
+                "id=" + id +
+                ", doctorIdNumber=" + doctorIdNumber +
+                ", date='" + date + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

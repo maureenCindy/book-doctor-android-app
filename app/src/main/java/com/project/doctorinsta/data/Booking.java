@@ -5,43 +5,34 @@ import java.io.Serializable;
 
 public class Booking implements Serializable {
 
-    private String id;
-    private String patient;
-    private String scheduleID;
+
+    private Long scheduleId;
+    private String patientPhone;
     private String status;
 
     public Booking() {
     }
 
-    public Booking(String id, String patient, String scheduleID, String status) {
-        this.id = id;
-        this.patient = patient;
-        this.scheduleID = scheduleID;
+    public Booking(String patientPhone, Long scheduleID, String status) {
+        this.patientPhone = patientPhone;
+        this.scheduleId = scheduleID;
         this.status = status;
     }
 
-    public String getId() {
-        return id;
+    public Long getScheduleId() {
+        return scheduleId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setScheduleId(Long scheduleId) {
+        this.scheduleId = scheduleId;
     }
 
-    public String getPatient() {
-        return patient;
+    public String getPatientPhone() {
+        return patientPhone;
     }
 
-    public void setPatient(String patient) {
-        this.patient = patient;
-    }
-
-    public String getScheduleID() {
-        return scheduleID;
-    }
-
-    public void setScheduleID(String scheduleID) {
-        this.scheduleID = scheduleID;
+    public void setPatientPhone(String patientPhone) {
+        this.patientPhone = patientPhone;
     }
 
     public String getStatus() {

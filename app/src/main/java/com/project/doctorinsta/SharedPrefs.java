@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.data.Patient;
+import com.project.doctorinsta.data.Schedule;
 import com.project.doctorinsta.data.Specialisation;
 
 import java.lang.reflect.Type;
@@ -122,6 +123,21 @@ public class SharedPrefs {
         Gson gson = new Gson();
         String storedHashMapString = sharedPreferences.getString(tag, "");
         Type type = new TypeToken<List<Specialisation>>() {
+        }.getType();
+        return gson.fromJson(storedHashMapString, type);
+    }
+
+    public void setUserSchedules(String tag, List<Schedule> schedules) {
+        Gson gson = new Gson();
+        String hashMapString = gson.toJson(schedules);
+        prefsEditor.putString(tag, hashMapString);
+        prefsEditor.apply();
+    }
+
+    public List<Schedule> getUserSchedules(String tag) {
+        Gson gson = new Gson();
+        String storedHashMapString = sharedPreferences.getString(tag, "");
+        Type type = new TypeToken<List<Schedule>>() {
         }.getType();
         return gson.fromJson(storedHashMapString, type);
     }

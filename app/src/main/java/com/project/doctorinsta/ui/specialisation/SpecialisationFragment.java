@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +23,7 @@ import com.project.doctorinsta.R;
 import com.project.doctorinsta.SharedPrefs;
 import com.project.doctorinsta.adapter.SpecialityAdapter;
 import com.project.doctorinsta.data.Specialisation;
+import com.project.doctorinsta.ui.auth.LoginActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -35,7 +37,7 @@ public class SpecialisationFragment extends Fragment {
     private SpecialityAdapter specialityAdapter;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView;
-
+    private MaterialDialog materialDialog;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root= inflater.inflate(R.layout.fragment_specialisation,container,false);
@@ -46,12 +48,16 @@ public class SpecialisationFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-         List<Specialisation> specialisations = new ArrayList<>();
+         materialDialog = new MaterialDialog.Builder(getActivity())
+                 .title("loading data ")
+                 .content("wait ...")
+                 .progress(true, 0).show();
         DatabaseReference dbRef= FirebaseDatabase.getInstance().getReference("specialisations");
         Query specList = dbRef.orderByChild("id");
         specList.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
+                List<Specialisation> specialisations = new ArrayList<>();
                 Log.d("found specialisations",":"+dataSnapshot.getChildrenCount());
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Log.d("found specialisation",":"+snapshot.toString());
@@ -64,6 +70,9 @@ public class SpecialisationFragment extends Fragment {
                 SharedPrefs sharedPrefs = SharedPrefs.getInstance(getActivity());
                 sharedPrefs.setSpecialities("specialities",specialisations);
                 Log.d("found specialisations",":"+specialisations.size()+" for adapter");
+                if(materialDialog.isShowing()){
+                    materialDialog.dismiss();
+                }
                 linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                 recyclerView.setLayoutManager(linearLayoutManager);
                 specialityAdapter = new SpecialityAdapter(getActivity(), specialisations);

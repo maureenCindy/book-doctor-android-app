@@ -33,12 +33,23 @@
                 android:text="DR. Mary Smith"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tvDocSpecialty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDocBooked"
+                android:maxLines="1"
+                android:padding="2dp"
+                android:layout_marginTop="2dp"
+                android:text="Dentist"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvBookDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvDocBooked"
+                android:layout_below="@id/tvDocSpecialty"
                 android:layout_marginTop="2dp"
                 android:padding="2dp"
                 android:text="20 Oct 2020"
@@ -47,13 +58,25 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvBookTimeSlot"
+                android:id="@+id/tvBookedTimeSlot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvBookDate"
                 android:layout_marginTop="2dp"
                 android:padding="2dp"
                 android:text="900-1000HRS"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvDocAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvBookedTimeSlot"
+                android:layout_marginTop="2dp"
+                android:padding="2dp"
+                android:lines="2"
+                android:text="123 Blackburn, Harare, Zimbabwe"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
         </RelativeLayout>
