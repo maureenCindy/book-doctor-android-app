@@ -10,6 +10,7 @@ import android.widget.Toolbar;
 import com.project.doctorinsta.PatientDashboardActivity;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.SharedPrefs;
+import com.project.doctorinsta.ui.auth.DoctorLoginActivity;
 import com.project.doctorinsta.ui.auth.LoginActivity;
 import com.project.doctorinsta.ui.auth.RegisterActivity;
 
@@ -29,7 +30,8 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Doctor's dash page", Toast.LENGTH_LONG).show();
             }else{
                 //todo doctor's pass userType == doctor so that we reuse the login and register pages
-                Toast.makeText(getApplicationContext(), "Doctor's login page", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getApplicationContext(), DoctorLoginActivity.class));
+                finish();
             }
         });
         findViewById(R.id.btnPatient).setOnClickListener(view -> {

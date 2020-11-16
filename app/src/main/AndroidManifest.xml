@@ -20,6 +20,8 @@
         <activity android:name=".ui.auth.RegisterActivity" />
         <activity android:name=".ui.booking.BookActivity" />
         <activity android:name=".ui.auth.LoginActivity" />
+        <activity android:name=".ui.auth.DoctorLoginActivity" />
+        <activity android:name=".ui.auth.DoctorRegisterActivity" />
     </application>
 
 </manifest>

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,14 +19,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.project.doctorinsta.PatientDashboardActivity;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.SharedPrefs;
+import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.data.Patient;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class LoginActivity extends AppCompatActivity {
+public class DoctorLoginActivity extends AppCompatActivity {
     MaterialDialog materialDialog;
     EditText username, password;
     SharedPrefs sharedPrefs;
@@ -38,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPrefs =SharedPrefs.getInstance(this);
-        getSupportActionBar().setTitle("Login");
+        getSupportActionBar().setTitle("Doctor Login");
         firebaseAuth= FirebaseAuth.getInstance();
         setContentView(R.layout.activity_login);
         username = findViewById(R.id.etUsername);
@@ -56,16 +53,16 @@ public class LoginActivity extends AppCompatActivity {
                 login(email,pass);
             }
         });
-        register.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), RegisterActivity.class)));
+        register.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), DoctorRegisterActivity.class)));
     }
 
 
     private void login(String username, String password){
-        materialDialog = new MaterialDialog.Builder(LoginActivity.this)
-                .title("authenticating patient")
+        materialDialog = new MaterialDialog.Builder(DoctorLoginActivity.this)
+                .title("authenticating doctor")
                 .content("wait ...")
                 .progress(true, 0).show();
-        DatabaseReference db= FirebaseDatabase.getInstance().getReference("patients");
+        DatabaseReference db= FirebaseDatabase.getInstance().getReference("doctors");
         Query checkUser = db.orderByChild("phone").equalTo(username);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -80,21 +77,27 @@ public class LoginActivity extends AppCompatActivity {
                         String countryFromDb =snapshot.child(username).child("country").getValue(String.class);
                         String cityFromDb =snapshot.child(username).child("city").getValue(String.class);
                         String phoneFromDb =snapshot.child(username).child("phone").getValue(String.class);
-                        Patient patient = new Patient( phoneFromDb,  emailFromDb,  "password",  nameFromDb,  surnameFromDb,
-                                 addressFromDb,  countryFromDb,  cityFromDb);
-                        sharedPrefs.setPatient("loggedInPatient",patient);
+                        String passFromDb =snapshot.child(username).child("password").getValue(String.class);
+                        Long idNumberFromDb =snapshot.child(username).child("idNumber").getValue(Long.class);
+                        Long specialtyIdNumberFromDb =snapshot.child(username).child("specialtyIdNumber").getValue(Long.class);
+                        String rateFromDb =snapshot.child(username).child("rate").getValue(String.class);
+                        String experienceFromDb =snapshot.child(username).child("experience").getValue(String.class);
+                        Doctor doctor = new Doctor(experienceFromDb, idNumberFromDb, specialtyIdNumberFromDb,
+                                rateFromDb, nameFromDb, surnameFromDb, phoneFromDb,
+                                emailFromDb, passFromDb,countryFromDb, cityFromDb, addressFromDb);
+                        sharedPrefs.setDoctor("loggedInDoctor",doctor);
                         sharedPrefs.setBooleanValue("isLoggedIn",true);
-                        sharedPrefs.setValue("userType","patient");
+                        sharedPrefs.setValue("userType","doctor");
                         if (materialDialog.isShowing()) {
                             materialDialog.dismiss();
                         }
-                        startActivity(new Intent(LoginActivity.this, PatientDashboardActivity.class));
+                        startActivity(new Intent(DoctorLoginActivity.this, PatientDashboardActivity.class));
                         finish();
                     }else {
                         if (materialDialog.isShowing()) {
                             materialDialog.dismiss();
                         }
-                        new MaterialDialog.Builder(LoginActivity.this)
+                        new MaterialDialog.Builder(DoctorLoginActivity.this)
                                 .title("Login Error")
                                 .content("Wrong username or password")
                                 .positiveText("OK")
@@ -104,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (materialDialog.isShowing()) {
                         materialDialog.dismiss();
                     }
-                    new MaterialDialog.Builder(LoginActivity.this)
+                    new MaterialDialog.Builder(DoctorLoginActivity.this)
                             .title("Login Error")
                             .content("Wrong username or password")
                             .positiveText("OK")
@@ -118,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (materialDialog.isShowing()) {
                     materialDialog.dismiss();
                 }
-                new MaterialDialog.Builder(LoginActivity.this)
+                new MaterialDialog.Builder(DoctorLoginActivity.this)
                         .title("Login Error")
                         .content(error.getMessage())
                         .positiveText("OK")

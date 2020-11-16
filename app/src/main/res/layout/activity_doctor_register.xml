@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".ui.auth.RegisterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo_image"/>
+
+
+            <EditText
+                android:id="@+id/etFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_person"
+                android:hint="Firstname"
+                android:text=""
+                android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+
+
+            <EditText
+                android:id="@+id/etLastName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_person"
+                android:hint="Lastname"
+                android:text=""
+                android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+            <EditText
+                android:id="@+id/etIdNumber"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_person"
+                android:hint="Doctor Reg. Number"
+                android:text=""
+                android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                android:id="@+id/spinnerSpeciality"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:smsp_errorTextColor="@color/design_default_color_error"
+                app:smsp_floatingLabelColor="#7C4DFF"
+                app:smsp_hint="Choose specialty"
+                app:smsp_hintColor="#808080"
+                app:smsp_isSearchable="true"
+                app:smsp_itemColor="@color/black"
+                app:smsp_itemListColor="@color/black"
+                app:smsp_itemListHintBackgroundColor="#808080"
+                app:smsp_itemListHintColor="#FFFFFF"
+                app:smsp_multilineError="false"
+                app:smsp_selectedItemListColor="@color/black" />
+
+            <EditText
+                android:id="@+id/etExperience"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_person"
+                android:hint="Experience"
+                android:text=""
+                android:inputType="number"
+                android:background="#FFFFFF"
+                android:maxLines="1"
+                android:lines="1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+            <EditText
+                android:id="@+id/etRate"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_person"
+                android:hint="Rate i.e $20/hr"
+                android:text=""
+                android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_phone"
+                android:hint="Phone"
+                android:text=""
+                android:inputType="phone"
+                android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_email"
+                android:hint="Email"
+                android:text=""
+                android:inputType="textEmailAddress"
+                android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Country"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:paddingBottom="5dp"
+                app:drawableLeftCompat="@drawable/ic_location">
+            </TextView>
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/etCountry"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Country"
+                android:background="#FFFFFF"
+                app:ccp_showFullName="true"
+                app:ccp_showPhoneCode="false"
+                app:ccp_showNameCode="false"
+                app:ccp_defaultNameCode="ZW"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_countryAutoDetectionPref="LOCALE_SIM"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_location"
+                android:hint="Address"
+                android:text=""
+                android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+            <EditText
+                android:id="@+id/etCity"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_location"
+                android:hint="City"
+                android:text=""
+                android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawablePadding="15dp"
+                android:padding="10dp"
+                android:drawableLeft="@drawable/ic_lock"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:text=""
+                android:background="#FFFFFF"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:lines="1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#4b000000"/>
+
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:text="Register"
+                android:textSize="18sp"
+                android:drawablePadding="-15sp"
+                android:paddingRight="16dp"
+                android:textColor="#FFFFFF"
+                android:elevation="15dp"
+                android:textAllCaps="true"
+                android:layout_marginBottom="10dp"
+                android:drawableRight="@drawable/ic_arrow"
+                android:background="@drawable/ic_round_corner_button"/>
+
+
+
+            <TextView
+                android:id="@+id/tvLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Have an Account? Sign in"
+                android:textSize="16sp"
+                android:padding="15dp"
+                android:textColor="#6175f5"
+                android:textStyle="normal"/>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
