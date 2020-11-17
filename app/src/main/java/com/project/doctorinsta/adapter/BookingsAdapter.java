@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.doctorinsta.R;
-import com.project.doctorinsta.data.Booking;
 import com.project.doctorinsta.data.BookingInfo;
 
 import java.util.List;

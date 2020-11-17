@@ -10,12 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.project.doctorinsta.PatientDashboardActivity;
 import com.project.doctorinsta.R;
-import com.project.doctorinsta.SharedPrefs;
 import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.data.Specialisation;
-import com.project.doctorinsta.ui.booking.BookActivity;
+import com.project.doctorinsta.patient_ui.booking.BookActivity;
+import com.project.doctorinsta.utils.SharedPrefs;
 
 import java.util.List;
 
@@ -47,7 +46,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         DoctorViewHolder doctorViewHolder = (DoctorViewHolder)viewHolder;
         final Doctor doctor = doctors.get(position);
         doctorViewHolder.name.setText("Dr "+doctor.getFirstname() + " "+ doctor.getLastname());
-        doctorViewHolder.speciality.setText(getDoctorSpeciality(doctor.getSpecialityIdNumber()));
+        doctorViewHolder.speciality.setText(getDoctorSpeciality(doctor.getSpecialtyIdNumber()));
         doctorViewHolder.rate.setText("Rate:"+doctor.getRate());
         doctorViewHolder.experience.setText("Exp:"+doctor.getExperience());
         doctorViewHolder.fullAddress.setText(doctor.getAddress()+","+doctor.getCity()+","+ doctor.getCountry()+".");

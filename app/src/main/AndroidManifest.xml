@@ -9,19 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.home.HomeActivity">
+        <activity android:name=".common_ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PatientDashboardActivity" />
-        <activity android:name=".ui.auth.RegisterActivity" />
-        <activity android:name=".ui.booking.BookActivity" />
-        <activity android:name=".ui.auth.LoginActivity" />
-        <activity android:name=".ui.auth.DoctorLoginActivity" />
-        <activity android:name=".ui.auth.DoctorRegisterActivity" />
+        <activity android:name=".doctor_ui.dashboard.DoctorDashboardActivity" />
+        <activity android:name=".patient_ui.dashboard.PatientDashboardActivity" />
+        <activity android:name=".patient_ui.auth.RegisterActivity" />
+        <activity android:name=".patient_ui.booking.BookActivity" />
+        <activity android:name=".patient_ui.auth.LoginActivity" />
+        <activity android:name=".doctor_ui.auth.DoctorLoginActivity" />
+        <activity android:name=".doctor_ui.auth.DoctorRegisterActivity" />
     </application>
 
 </manifest>

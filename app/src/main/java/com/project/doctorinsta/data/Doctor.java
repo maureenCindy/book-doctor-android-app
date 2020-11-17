@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Doctor implements Serializable {
 
-    private Long specialityIdNumber;
+    private Long specialtyIdNumber;
     private Long idNumber;
     private String rate;
     private String firstname;
@@ -19,10 +19,10 @@ public class Doctor implements Serializable {
     public Doctor() {
     }
 
-    public Doctor(String experience,Long idNumber, Long specialityIdNumber, String rate, String firstname, String lastname, String phone,
+    public Doctor(String experience, Long idNumber, Long specialtyIdNumber, String rate, String firstname, String lastname, String phone,
                   String email, String password, String country, String city, String address) {
        this.experience=experience;
-        this.specialityIdNumber = specialityIdNumber;
+        this.specialtyIdNumber = specialtyIdNumber;
         this.rate = rate;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -43,12 +43,12 @@ public class Doctor implements Serializable {
         this.experience = experience;
     }
 
-    public Long getSpecialityIdNumber() {
-        return specialityIdNumber;
+    public Long getSpecialtyIdNumber() {
+        return specialtyIdNumber;
     }
 
-    public void setSpecialityIdNumber(Long specialityIdNumber) {
-        this.specialityIdNumber = specialityIdNumber;
+    public void setSpecialtyIdNumber(Long specialtyIdNumber) {
+        this.specialtyIdNumber = specialtyIdNumber;
     }
 
     public Long getIdNumber() {

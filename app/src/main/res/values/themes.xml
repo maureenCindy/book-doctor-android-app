@@ -56,6 +56,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:drawablePadding">20dp</item>
     </style>
+
     <style name="viewParent.headerText.settingsTextIcon" parent="settingsText">
         <item name="android:drawableRight">@drawable/ic_view_more</item>
     </style>
@@ -76,11 +77,14 @@
     </style>
 
 
-
-
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <color name="contentTextColor">#020000</color>
     <color name="miniTitle">#2A2E43</color>
-    <dimen name="headerTextSize">16sp</dimen>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="job_status_green">#ff16be33</color>
@@ -88,8 +92,12 @@
     <color name="light_background">#ffe3e3e3</color>
     <color name="light_seperator">#80e1dfdf</color>
     <color name="lightgreen">#ff85cc8b</color>
+
     <color name="lighttext">#808b91a0</color>
+
     <color name="lighttext_solid">#ff8b91a0</color>
+
+    <dimen name="headerTextSize">16sp</dimen>
 
 
 </resources>
