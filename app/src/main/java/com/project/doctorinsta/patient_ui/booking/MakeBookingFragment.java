@@ -78,7 +78,7 @@ public class MakeBookingFragment extends Fragment {
         docRate = root.findViewById(R.id.tvDocRate);
         docRate.setText("Rate:"+doctor.getRate());
         docExperience = root.findViewById(R.id.tvDocExperience);
-        docExperience.setText(doctor.getExperience());
+        docExperience.setText("Exp. "+doctor.getExperience()+ "years");
         docFullAddress = root.findViewById(R.id.tvDocFullAddress);
         docFullAddress.setText(doctor.getAddress()+","+doctor.getCity()+","+doctor.getCountry()+".");
         datePickerTimeline = root.findViewById(R.id.datePickerTimeline);

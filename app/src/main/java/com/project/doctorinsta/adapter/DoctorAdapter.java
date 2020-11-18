@@ -27,7 +27,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public DoctorAdapter(Context context, List<Doctor> items) {
         this.doctors = items;
         this.context = context;
-        layoutInflater = LayoutInflater.from(context);
+        layoutInflater = LayoutInflater.from(this.context);
 
     }
 
@@ -48,7 +48,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         doctorViewHolder.name.setText("Dr "+doctor.getFirstname() + " "+ doctor.getLastname());
         doctorViewHolder.speciality.setText(getDoctorSpeciality(doctor.getSpecialtyIdNumber()));
         doctorViewHolder.rate.setText("Rate:"+doctor.getRate());
-        doctorViewHolder.experience.setText("Exp:"+doctor.getExperience());
+        doctorViewHolder.experience.setText("Exp:"+doctor.getExperience() + "Years");
         doctorViewHolder.fullAddress.setText(doctor.getAddress()+","+doctor.getCity()+","+ doctor.getCountry()+".");
         doctorViewHolder.bookLink.setOnClickListener(v->{
             SharedPrefs sharedPrefs = SharedPrefs.getInstance(context);

@@ -23,7 +23,7 @@ public class PatientBookingsAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public PatientBookingsAdapter(Context context, List<PatientBookingInfo> items) {
         this.bookings = items;
         this.context = context;
-        layoutInflater = LayoutInflater.from(context);
+        layoutInflater = LayoutInflater.from(this.context);
 
     }
 

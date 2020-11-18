@@ -62,20 +62,22 @@ public class LoginActivity extends AppCompatActivity {
                 .content("wait ...")
                 .progress(true, 0).show();
         DatabaseReference db= FirebaseDatabase.getInstance().getReference("patients");
-        Query checkUser = db.orderByChild("phone").equalTo(username);
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query checkUser = db.orderByChild("phone");
+        checkUser.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String storedPass = snapshot.child(username).child("password").getValue(String.class);
-                    if(storedPass.equals(password)){
-                        String nameFromDb =snapshot.child(username).child("firstname").getValue(String.class);
-                        String surnameFromDb =snapshot.child(username).child("lastname").getValue(String.class);
-                        String emailFromDb =snapshot.child(username).child("email").getValue(String.class);
-                        String addressFromDb =snapshot.child(username).child("address").getValue(String.class);
-                        String countryFromDb =snapshot.child(username).child("country").getValue(String.class);
-                        String cityFromDb =snapshot.child(username).child("city").getValue(String.class);
-                        String phoneFromDb =snapshot.child(username).child("phone").getValue(String.class);
+                for(DataSnapshot childSnapshot: snapshot.getChildren()){
+                    String storedPass = childSnapshot.child("password").getValue(String.class);
+                    String storedEmail = childSnapshot.child("email").getValue(String.class);
+                    if(storedEmail!=null && storedPass!=null &&
+                            storedPass.equals(password) && storedEmail.equalsIgnoreCase(username)){
+                        String nameFromDb =childSnapshot.child("firstname").getValue(String.class);
+                        String surnameFromDb =childSnapshot.child("lastname").getValue(String.class);
+                        String emailFromDb =childSnapshot.child("email").getValue(String.class);
+                        String addressFromDb =childSnapshot.child("address").getValue(String.class);
+                        String countryFromDb =childSnapshot.child("country").getValue(String.class);
+                        String cityFromDb =childSnapshot.child("city").getValue(String.class);
+                        String phoneFromDb =childSnapshot.child("phone").getValue(String.class);
                         Patient patient = new Patient( phoneFromDb,  emailFromDb,  "password",  nameFromDb,  surnameFromDb,
                                  addressFromDb,  countryFromDb,  cityFromDb);
                         sharedPrefs.setPatient("loggedInPatient",patient);
@@ -86,27 +88,18 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         startActivity(new Intent(LoginActivity.this, PatientDashboardActivity.class));
                         finish();
-                    }else {
-                        if (materialDialog.isShowing()) {
-                            materialDialog.dismiss();
-                        }
-                        new MaterialDialog.Builder(LoginActivity.this)
-                                .title("Login Error")
-                                .content("Wrong username or password")
-                                .positiveText("OK")
-                                .show();
                     }
-                }else{
-                    if (materialDialog.isShowing()) {
-                        materialDialog.dismiss();
-                    }
+                }
+                if (materialDialog.isShowing()) {
+                    materialDialog.dismiss();
+                }
+                if(!sharedPrefs.getBooleanValue("isLoggedIn")){
                     new MaterialDialog.Builder(LoginActivity.this)
                             .title("Login Error")
                             .content("Wrong username or password")
                             .positiveText("OK")
                             .show();
                 }
-
             }
 
             @Override

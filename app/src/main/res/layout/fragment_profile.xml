@@ -40,7 +40,7 @@
                     <TextView
                         android:id="@+id/fullNameTextView"
                         style="@style/viewParent.headerText"
-                        android:text=""
+                        android:text="User full name"
                         android:textSize="18sp"
                         android:layout_toRightOf="@+id/profileImageView"
                         android:paddingLeft="8dp"
@@ -55,7 +55,7 @@
                         android:layout_centerHorizontal="true"
                         android:paddingLeft="8dp"
                         android:layout_marginTop="-1dp"
-                        android:text=""
+                        android:text="user@email.com"
                         android:textColor="#5D5C5C"
                         android:textSize="16sp" />
 
@@ -84,6 +84,13 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/change_password"
                     app:drawableLeftCompat="@drawable/ic_lock" />
+
+                <TextView
+                    android:id="@+id/logoutTextView"
+                    style="@style/viewParent.headerText.settingsTextIcon"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/logout"
+                    app:drawableLeftCompat="@drawable/ic_logout" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.01dp"
@@ -132,14 +139,6 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/get_support"
                     app:drawableLeftCompat="@drawable/ic_email" />
-
-                <TextView
-                    android:id="@+id/logoutTextView"
-                    style="@style/viewParent.headerText.settingsTextIcon"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/logout"
-                    app:drawableLeftCompat="@drawable/ic_logout" />
-
 
                 <View
                     android:layout_width="match_parent"

@@ -13,10 +13,14 @@ import androidx.fragment.app.Fragment;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.data.Patient;
+import com.project.doctorinsta.patient_ui.dashboard.PatientDashboardActivity;
 import com.project.doctorinsta.utils.SharedPrefs;
 
 
 public class ProfileFragment extends Fragment {
+
+    Patient patient;
+    Doctor doctor;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_profile,container,false);
@@ -25,20 +29,33 @@ public class ProfileFragment extends Fragment {
         SharedPrefs sharedPrefs = SharedPrefs.getInstance(getActivity());
         if(sharedPrefs.getValue("userType")!=null &&
                 sharedPrefs.getValue("userType").equalsIgnoreCase("doctor")){
-            Doctor doctor = sharedPrefs.getDoctor("loggedInDoctor");
+            doctor = sharedPrefs.getDoctor("loggedInDoctor");
             if(doctor!=null){
                 fullname.setText("Dr "+doctor.getFirstname()+ " "+ doctor.getLastname());
-                email.setText(doctor.getPhone());
+                email.setText(doctor.getEmail());
             }
 
         }else {
-            Patient patient = sharedPrefs.getPatient("loggedInPatient");
+            patient = sharedPrefs.getPatient("loggedInPatient");
             if(patient!=null){
                 fullname.setText(patient.getFirstname()+ " "+ patient.getLastname());
-                email.setText(patient.getPhone());
+                email.setText(patient.getEmail());
             }
 
         }
+        TextView editPassword =root.findViewById(R.id.changePasswordTextView);
+        editPassword.setOnClickListener(v->{
+            if(doctor!=null){
+                Intent intent = new Intent(v.getContext(), PatientDashboardActivity.class);
+                intent.putExtra("fragmentName", "ChangePassword");
+                v.getContext().startActivity(intent);
+            }else if(patient!=null){
+                Intent intent = new Intent(v.getContext(), PatientDashboardActivity.class);
+                intent.putExtra("fragmentName", "ChangePassword");
+                v.getContext().startActivity(intent);
+            }
+        });
+
         root.findViewById(R.id.logoutTextView).setOnClickListener(v->{
             sharedPrefs.clearAllPreferences();
             startActivity(new Intent(getActivity(), HomeActivity.class));

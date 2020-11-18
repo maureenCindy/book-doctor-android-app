@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.project.doctorinsta.R;
+import com.project.doctorinsta.common_ui.ChangePasswordFragment;
 import com.project.doctorinsta.utils.SharedPrefs;
 
 public class PatientDashboardActivity extends AppCompatActivity {
@@ -73,6 +74,11 @@ public class PatientDashboardActivity extends AppCompatActivity {
                     break;
                 case "MyBookings":
                     navController.navigate(R.id.nav_bookings);
+                    break;
+                case "ChangePassword":
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
+                            ChangePasswordFragment.newInstance()).commit();
+                    actionBar.setTitle("Change Password");
                     break;
                 default:
                     navController.navigate(R.id.nav_specialisations);
