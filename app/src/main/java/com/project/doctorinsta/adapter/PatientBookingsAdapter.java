@@ -58,11 +58,10 @@ public class PatientBookingsAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         TextView phone;
         TextView date;
         TextView timeslot;
-        TextView status;
         public PatientBookingViewHolder(View view) {
             super(view);
-            patientName= view.findViewById(R.id.tvDocName);
-            phone= view.findViewById(R.id.tvSpecialityName);
+            patientName= view.findViewById(R.id.tvDocBooked);
+            phone= view.findViewById(R.id.tvDocSpecialty);
             date= view.findViewById(R.id.tvBookDate);
             timeslot= view.findViewById(R.id.tvBookedTimeSlot);
             TextView address= view.findViewById(R.id.tvDocAddress);

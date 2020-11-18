@@ -79,7 +79,7 @@ public class SlotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             //   saving  new booking;
                             DatabaseReference dbBookingsRef = FirebaseDatabase.getInstance().getReference("bookings");
                             Patient patient = sharedPrefs.getPatient("loggedInPatient");
-                            final Booking booking = new Booking(patient.getPhone(),slot.getId(),"open");
+                            final Booking booking = new Booking( slot.getDoctorIdNumber(), slot.getId(), patient.getPhone(), "open");
                             dbBookingsRef.child(String.valueOf(Calendar.getInstance().getTimeInMillis())).setValue(booking);
                             //update schedule to closed
                             DatabaseReference dbSchedulesRef = FirebaseDatabase.getInstance().getReference("schedules");

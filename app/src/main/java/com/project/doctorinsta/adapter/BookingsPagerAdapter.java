@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.project.doctorinsta.doctor_ui.bookings.BookingFragment;
 
 public class BookingsPagerAdapter extends FragmentPagerAdapter {
-    private static int NUM_ITEMS = 3;
+    private static final int NUM_ITEMS = 3;
 
     public BookingsPagerAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
@@ -24,7 +24,7 @@ public class BookingsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return BookingFragment.newInstance(false,true, false);
             case 2:
-                return BookingFragment.newInstance(false,true, false);
+                return BookingFragment.newInstance(false,false, true);
             default:
                 return BookingFragment.newInstance(true, false,false);
         }
@@ -38,7 +38,10 @@ public class BookingsPagerAdapter extends FragmentPagerAdapter {
         if(position==1){
             return "Upcoming";
         }
-        return "Past";
+        if(position==2){
+            return "Past";
+        }
+        return "Today";
     }
 
 }

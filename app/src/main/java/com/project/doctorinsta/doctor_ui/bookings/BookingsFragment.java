@@ -28,8 +28,8 @@ public class BookingsFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        BookingsPagerAdapter bidsPagerAdapter = new BookingsPagerAdapter(getChildFragmentManager());
-        viewPager.setAdapter(bidsPagerAdapter);
+        BookingsPagerAdapter bookingsPagerAdapter = new BookingsPagerAdapter(getChildFragmentManager());
+        viewPager.setAdapter(bookingsPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
 

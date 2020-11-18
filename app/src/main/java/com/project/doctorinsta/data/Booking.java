@@ -6,17 +6,27 @@ import java.io.Serializable;
 public class Booking implements Serializable {
 
 
+    private Long doctorIdNumber;
     private Long scheduleId;
     private String patientPhone;
     private String status;
 
+    public Booking(Long doctorIdNumber, Long scheduleId, String patientPhone, String status) {
+        this.doctorIdNumber = doctorIdNumber;
+        this.scheduleId = scheduleId;
+        this.patientPhone = patientPhone;
+        this.status = status;
+    }
+
     public Booking() {
     }
 
-    public Booking(String patientPhone, Long scheduleID, String status) {
-        this.patientPhone = patientPhone;
-        this.scheduleId = scheduleID;
-        this.status = status;
+    public Long getDoctorIdNumber() {
+        return doctorIdNumber;
+    }
+
+    public void setDoctorIdNumber(Long doctorIdNumber) {
+        this.doctorIdNumber = doctorIdNumber;
     }
 
     public Long getScheduleId() {
