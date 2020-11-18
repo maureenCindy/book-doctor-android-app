@@ -138,7 +138,7 @@ public class BookingFragment extends Fragment {
                                                 int month= Calendar.getInstance().get(Calendar.MONTH)+1;
                                                 int bkMonth= Integer.parseInt(patientBooking.getDate().substring(3,5));
                                                 int day= Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-                                                int bkDay= Integer.parseInt(patientBooking.getDate().substring(0,2));
+                                                int bkDay= Integer.parseInt(patientBooking.getDate().substring(0,patientBooking.getDate().indexOf("-")));
                                                 //calendar
                                                 Log.d("bkYr", ": "+ bkYr);
                                                 Log.d("calendar yr", ": "+ yr);
@@ -177,7 +177,7 @@ public class BookingFragment extends Fragment {
                                     linearLayoutManager = new LinearLayoutManager(getActivity(),
                                             LinearLayoutManager.VERTICAL, false);
                                     recyclerView.setLayoutManager(linearLayoutManager);
-                                    bookingsAdapter = new PatientBookingsAdapter(getActivity(), bookings);
+                                    bookingsAdapter = new PatientBookingsAdapter(getContext(), bookings);
                                     recyclerView.setAdapter(bookingsAdapter);
                                 }
 

@@ -116,7 +116,7 @@ public class MakeBookingFragment extends Fragment {
                                     dBdate!=null && dBdate.length()==10 &&
                                     year==Integer.parseInt(dBdate.substring(6)) &&
                                     month+1==Integer.parseInt(dBdate.substring(3,5)) &&
-                                    day==Integer.parseInt(dBdate.substring(0,2))){
+                                    day==Integer.parseInt(dBdate.substring(0,dBdate.indexOf("-")))){
                                 String startTime = childSnapshot.child("startTime").getValue(String.class);
                                 String endTime = childSnapshot.child("endTime").getValue(String.class);
                                 Long id = childSnapshot.child("id").getValue(Long.class);

@@ -82,18 +82,20 @@ public class SlotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             final Booking booking = new Booking( slot.getDoctorIdNumber(), slot.getId(), patient.getPhone(), "open");
                             dbBookingsRef.child(String.valueOf(Calendar.getInstance().getTimeInMillis())).setValue(booking);
                             //update schedule to closed
+                            Log.d("Searching for schedule"," with id, "+slot.getId());
                             DatabaseReference dbSchedulesRef = FirebaseDatabase.getInstance().getReference("schedules");
-                            Query query = dbSchedulesRef.orderByChild("doctorIdNumber").equalTo(slot.getDoctorIdNumber());
+                            Query query = dbSchedulesRef.orderByChild("id").equalTo(slot.getId());
                             query.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                    if(snapshot.exists()){
-                                        Log.d("exists",":true");
-                                        Long id = snapshot.child(String.valueOf(slot.getDoctorIdNumber())).child("id").getValue(Long.class);
-                                        if(id!=null && id.equals(slot.getId())){
-                                            Log.d("found",":true");
-                                            snapshot.child(String.valueOf(slot.getDoctorIdNumber())).child("status").getRef().setValue("closed");
-                                        }
+                                    if(snapshot.exists() ){
+                                        Long id = snapshot.child(String.valueOf(slot.getId())).child("id").getValue(Long.class);
+                                        Log.d("found schedule"," with id, "+id);
+                                        Log.d("found schedule"," to be updated, "+snapshot.toString());
+                                        Log.d("updated status"," from open to close");
+                                        snapshot.child(String.valueOf(slot.getId())).child("status").getRef().setValue("closed");
+                                    }else {
+                                        Log.d("Not found schedule"," with id, "+slot.getId());
                                     }
                                 }
 

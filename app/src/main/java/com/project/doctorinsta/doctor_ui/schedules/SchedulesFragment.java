@@ -1,5 +1,6 @@
 package com.project.doctorinsta.doctor_ui.schedules;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -68,6 +69,7 @@ public class SchedulesFragment extends Fragment {
         sharedPrefs =SharedPrefs.getInstance(getActivity());
         doctor = sharedPrefs.getDoctor("loggedInDoctor");
         addNew = root.findViewById(R.id.tvAddNewSchedule);
+        addNew.setOnClickListener(view -> startActivity(new Intent(getActivity(), AddScheduleActivity.class)));
         datePickerTimeline = root.findViewById(R.id.datePickerTimeline);
         datePickerTimeline.setDateTextColor(Color.WHITE);
         datePickerTimeline.setDayTextColor(Color.WHITE);

@@ -23,6 +23,7 @@
         <activity android:name=".patient_ui.auth.LoginActivity" />
         <activity android:name=".doctor_ui.auth.DoctorLoginActivity" />
         <activity android:name=".doctor_ui.auth.DoctorRegisterActivity" />
+        <activity android:name=".doctor_ui.schedules.AddScheduleActivity" />
     </application>
 
 </manifest>
