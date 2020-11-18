@@ -26,7 +26,6 @@ import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.data.PatientBooking;
 import com.project.doctorinsta.data.PatientBookingInfo;
 import com.project.doctorinsta.data.Specialisation;
-import com.project.doctorinsta.patient_ui.booking.MyBookingsFragment;
 import com.project.doctorinsta.utils.SharedPrefs;
 
 import org.jetbrains.annotations.NotNull;
