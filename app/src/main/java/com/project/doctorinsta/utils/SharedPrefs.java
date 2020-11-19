@@ -127,20 +127,23 @@ public class SharedPrefs {
         return gson.fromJson(storedHashMapString, type);
     }
 
-    public void setUserSchedules(String tag, List<Schedule> schedules) {
+
+    public void setAllDoctors(String tag, List<Doctor> doctors) {
         Gson gson = new Gson();
-        String hashMapString = gson.toJson(schedules);
+        String hashMapString = gson.toJson(doctors);
         prefsEditor.putString(tag, hashMapString);
         prefsEditor.apply();
     }
 
-    public List<Schedule> getUserSchedules(String tag) {
+    public List<Doctor> getAllDoctors(String tag) {
         Gson gson = new Gson();
         String storedHashMapString = sharedPreferences.getString(tag, "");
-        Type type = new TypeToken<List<Schedule>>() {
+        Type type = new TypeToken<List<Doctor>>() {
         }.getType();
         return gson.fromJson(storedHashMapString, type);
     }
+
+
 
 
 }
