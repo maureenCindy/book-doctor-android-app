@@ -36,15 +36,13 @@
                     android:orientation="horizontal"
                     android:padding="10dp">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_location" />
-
                     <TextView
                         android:id="@+id/tvSearchByLocation"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawablePadding="15dp"
+                        android:padding="10dp"
+                        android:drawableLeft="@drawable/ic_location"
                         android:text="Locate"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -63,16 +61,15 @@
                     android:orientation="horizontal"
                     android:padding="10dp">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_location" />
 
                     <TextView
                         android:id="@+id/tvSearchNearMe"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="NearMe"
+                        android:drawablePadding="15dp"
+                        android:padding="10dp"
+                        android:drawableLeft="@drawable/ic_location"
+                        android:text="Near Me"
                         android:textSize="16sp" />
 
                 </LinearLayout>

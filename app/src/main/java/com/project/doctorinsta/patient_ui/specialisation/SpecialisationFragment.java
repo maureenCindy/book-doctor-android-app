@@ -1,10 +1,12 @@
 package com.project.doctorinsta.patient_ui.specialisation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +23,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.adapter.SpecialityAdapter;
+import com.project.doctorinsta.common_ui.HomeActivity;
 import com.project.doctorinsta.data.Specialisation;
+import com.project.doctorinsta.patient_ui.maps.MapsActivity;
 import com.project.doctorinsta.utils.SharedPrefs;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,6 +37,7 @@ import static android.content.ContentValues.TAG;
 
 public class SpecialisationFragment extends Fragment {
 
+    private TextView tvSearchByLocation;
     private SpecialityAdapter specialityAdapter;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView;
@@ -40,6 +45,10 @@ public class SpecialisationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root= inflater.inflate(R.layout.fragment_specialisation,container,false);
+        tvSearchByLocation = root.findViewById(R.id.tvSearchByLocation);
+        tvSearchByLocation.setOnClickListener(view -> {
+            startActivity(new Intent(view.getContext(), MapsActivity.class));
+        });
         recyclerView = root.findViewById(R.id.recyclerView);
         return root;
     }

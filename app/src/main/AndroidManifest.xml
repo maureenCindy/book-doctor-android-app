@@ -25,6 +25,7 @@
         <activity android:name=".doctor_ui.auth.DoctorRegisterActivity" />
         <activity android:name=".doctor_ui.schedules.AddScheduleActivity" />
         <activity android:name=".common_ui.ForgotPasswordActivity" />
+        <activity android:name=".patient_ui.maps.MapsActivity" />
     </application>
 
 </manifest>
