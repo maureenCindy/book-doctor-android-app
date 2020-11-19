@@ -43,5 +43,10 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        findViewById(R.id.tvForgotPasswordLink).setOnClickListener(v->{
+            startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
+            finish();
+        });
     }
 }

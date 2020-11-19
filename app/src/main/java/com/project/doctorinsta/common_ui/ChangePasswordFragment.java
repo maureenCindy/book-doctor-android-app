@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.data.Patient;
-import com.project.doctorinsta.doctor_ui.auth.DoctorLoginActivity;
 import com.project.doctorinsta.doctor_ui.dashboard.DoctorDashboardActivity;
 import com.project.doctorinsta.patient_ui.dashboard.PatientDashboardActivity;
 import com.project.doctorinsta.utils.SharedPrefs;

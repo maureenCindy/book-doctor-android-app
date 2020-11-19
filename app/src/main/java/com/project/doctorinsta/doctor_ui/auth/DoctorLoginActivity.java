@@ -19,7 +19,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.doctor_ui.dashboard.DoctorDashboardActivity;
-import com.project.doctorinsta.patient_ui.auth.LoginActivity;
 import com.project.doctorinsta.utils.SharedPrefs;
 
 import org.jetbrains.annotations.NotNull;
