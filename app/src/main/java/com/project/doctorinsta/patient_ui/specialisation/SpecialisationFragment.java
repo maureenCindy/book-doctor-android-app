@@ -1,6 +1,8 @@
 package com.project.doctorinsta.patient_ui.specialisation;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,12 +29,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.adapter.SpecialityAdapter;
 import com.project.doctorinsta.common_ui.HomeActivity;
+import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.data.Specialisation;
 import com.project.doctorinsta.patient_ui.maps.MapsActivity;
 import com.project.doctorinsta.utils.SharedPrefs;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,14 +85,53 @@ public class SpecialisationFragment extends Fragment {
                 SharedPrefs sharedPrefs = SharedPrefs.getInstance(getActivity());
                 sharedPrefs.setSpecialities("specialities",specialisations);
                 Log.d("found specialisations",":"+specialisations.size()+" for adapter");
-                if(materialDialog.isShowing()){
-                    materialDialog.dismiss();
-                }
-                linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-                recyclerView.setLayoutManager(linearLayoutManager);
-                specialityAdapter = new SpecialityAdapter(getActivity(), specialisations);
-                recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, 2, true));
-                recyclerView.setAdapter(specialityAdapter);
+                //fetching all docs
+                List<Doctor> doctors = new ArrayList<>();
+                DatabaseReference dbRef= FirebaseDatabase.getInstance().getReference("doctors");
+                Query docList = dbRef.orderByChild("phone");
+                docList.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
+                        Log.d("found doctors",":"+dataSnapshot.getChildrenCount());
+                        for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                            Log.d("found doctor",":"+snapshot.toString());
+                            String firstname =snapshot.child("firstname").getValue(String.class);
+                            String lastname =snapshot.child("lastname").getValue(String.class);
+                            Long idNumber =snapshot.child("idNumber").getValue(Long.class);
+                            Long specialtyIdNumber =snapshot.child("specialtyIdNumber").getValue(Long.class);
+                            String rate =snapshot.child("rate").getValue(String.class);
+                            String experience =snapshot.child("experience").getValue(String.class);
+                            String country =snapshot.child("country").getValue(String.class);
+                            if(country!=null && country.contains("(")){
+                                country= country.substring(0,country.indexOf("("));
+                            }
+                            String city =snapshot.child("city").getValue(String.class);
+                            String address =snapshot.child("address").getValue(String.class);
+                            if(address!=null && address.contains(",")){
+                                address.replace(","," ");
+                            }
+                            final Doctor doctor  = new Doctor( experience, idNumber, specialtyIdNumber,  rate,  firstname,  lastname,  "phone",
+                                    "email",  "password",  country,  city,  address);
+                            doctors.add(doctor);
+                        }
+                        sharedPrefs.setAllDoctors("all-docs",doctors);
+                        if(materialDialog.isShowing()){
+                            materialDialog.dismiss();
+                        }
+                        linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+                        recyclerView.setLayoutManager(linearLayoutManager);
+                        specialityAdapter = new SpecialityAdapter(getActivity(), specialisations);
+                        recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, 2, true));
+                        recyclerView.setAdapter(specialityAdapter);
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Getting Post failed, log a message
+                        Log.w(TAG, "load doctors:onCancelled", databaseError.toException());
+                        // ...
+                    }
+                });
             }
 
             @Override
