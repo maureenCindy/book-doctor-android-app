@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.data.Patient;
+import com.project.doctorinsta.doctor_ui.auth.EditDoctorProfileActivity;
+import com.project.doctorinsta.patient_ui.auth.EditPatientProfileActivity;
 import com.project.doctorinsta.patient_ui.dashboard.PatientDashboardActivity;
 import com.project.doctorinsta.utils.SharedPrefs;
 
@@ -60,6 +62,16 @@ public class ProfileFragment extends Fragment {
             sharedPrefs.clearAllPreferences();
             startActivity(new Intent(getActivity(), HomeActivity.class));
             getActivity().finish();
+        });
+
+        root.findViewById(R.id.editProfileTextView).setOnClickListener(v->{
+            if(doctor!=null){
+                startActivity(new Intent(getActivity(), EditDoctorProfileActivity.class));
+                getActivity().finish();
+            }else if(patient!=null){
+                startActivity(new Intent(getActivity(), EditPatientProfileActivity.class));
+                getActivity().finish();
+            }
         });
         return root;
     }

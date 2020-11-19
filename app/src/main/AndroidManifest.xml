@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.doctorinsta">
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,6 +28,8 @@
         <activity android:name=".doctor_ui.schedules.AddScheduleActivity" />
         <activity android:name=".common_ui.ForgotPasswordActivity" />
         <activity android:name=".patient_ui.maps.MapsActivity" />
+        <activity android:name=".doctor_ui.auth.EditDoctorProfileActivity" />
+        <activity android:name=".patient_ui.auth.EditPatientProfileActivity" />
     </application>
 
 </manifest>
