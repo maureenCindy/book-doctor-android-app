@@ -20,8 +20,8 @@
             android:layout_centerInParent="true">
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/logo_image"/>
@@ -109,7 +109,7 @@
                 android:layout_height="40dp"
                 android:drawablePadding="15dp"
                 android:paddingLeft="10dp"
-                android:drawableLeft="@drawable/ic_person"
+                android:drawableLeft="@drawable/ic_search"
                 android:hint="Experience"
                 android:text=""
                 android:inputType="number"
@@ -128,7 +128,7 @@
                 android:layout_height="40dp"
                 android:drawablePadding="15dp"
                 android:padding="10dp"
-                android:drawableLeft="@drawable/ic_person"
+                android:drawableLeft="@drawable/ic_bookmarked"
                 android:hint="Rate i.e $20/hr"
                 android:text=""
                 android:background="#FFFFFF"
