@@ -40,7 +40,6 @@ public class SlotAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public SlotAdapter(Context context, List<Schedule> items) {
         this.slots = items;
         this.context = context;
-        layoutInflater = LayoutInflater.from(this.context);
     }
 
     @Override

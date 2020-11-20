@@ -78,7 +78,7 @@ public class DoctorRegisterActivity extends AppCompatActivity  {
                     specialisations.add(specialisation);
                 }
                 String[] specialtiesList= new String[specialisations.size()];
-                SharedPrefs sharedPrefs = SharedPrefs.getInstance(getApplicationContext());
+                SharedPrefs sharedPrefs = SharedPrefs.getInstance(DoctorRegisterActivity.this);
                 sharedPrefs.setSpecialities("specialities",specialisations);
                 Log.d("Found specialisations",":"+specialisations.size()+" for adapter");
                 specialtyDropDown = findViewById(R.id.spinnerSpeciality);
@@ -135,7 +135,7 @@ public class DoctorRegisterActivity extends AppCompatActivity  {
                         if (materialDialog.isShowing()) {
                             materialDialog.dismiss();
                         }
-                        Toast.makeText(getApplicationContext(), "Registration successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DoctorRegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(DoctorRegisterActivity.this, DoctorLoginActivity.class));
                         finish();
                     }

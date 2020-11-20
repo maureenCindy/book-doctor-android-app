@@ -52,7 +52,7 @@ public class DoctorLoginActivity extends AppCompatActivity {
                 login(email,pass);
             }
         });
-        register.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), DoctorRegisterActivity.class)));
+        register.setOnClickListener(view -> startActivity(new Intent(DoctorLoginActivity.this, DoctorRegisterActivity.class)));
     }
 
 

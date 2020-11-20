@@ -89,26 +89,27 @@ public class EditDoctorProfileActivity extends AppCompatActivity  {
                         //todo update profile
                         Log.d("Searching for doctor"," with IdNumber, "+doctor.getIdNumber());
                         DatabaseReference dbSchedulesRef = FirebaseDatabase.getInstance().getReference("doctors");
-                        Query query = dbSchedulesRef.orderByChild("idNumber").equalTo(doctor.getIdNumber());
+                        Query query = dbSchedulesRef.orderByChild("phone").equalTo(doctor.getPhone());
                         query.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                 if(snapshot.exists() ){
                                     Log.d("found doc"," {}, "+snapshot.toString());
-                                    snapshot.child(String.valueOf(doctor.getIdNumber())).child("firstname").getRef().setValue(firstname);
-                                    snapshot.child(String.valueOf(doctor.getIdNumber())).child("lastname").getRef().setValue(lastname);
-                                    snapshot.child(String.valueOf(doctor.getIdNumber())).child("phone").getRef().setValue(phone);
-                                    snapshot.child(String.valueOf(doctor.getIdNumber())).child("address").getRef().setValue(address);
-                                    snapshot.child(String.valueOf(doctor.getIdNumber())).child("city").getRef().setValue(city);
-                                    snapshot.child(String.valueOf(doctor.getIdNumber())).child("rate").getRef().setValue(rate);
-                                    snapshot.child(String.valueOf(doctor.getIdNumber())).child("experience").getRef().setValue(experience);
-                                    snapshot.child(String.valueOf(doctor.getIdNumber())).child("country").getRef().setValue(country);
+                                    snapshot.child(String.valueOf(doctor.getPhone())).child("firstname").getRef().setValue(firstname);
+                                    snapshot.child(String.valueOf(doctor.getPhone())).child("lastname").getRef().setValue(lastname);
+                                    snapshot.child(String.valueOf(doctor.getPhone())).child("phone").getRef().setValue(phone);
+                                    snapshot.child(String.valueOf(doctor.getPhone())).child("address").getRef().setValue(address);
+                                    snapshot.child(String.valueOf(doctor.getPhone())).child("city").getRef().setValue(city);
+                                    snapshot.child(String.valueOf(doctor.getPhone())).child("rate").getRef().setValue(rate);
+                                    snapshot.child(String.valueOf(doctor.getPhone())).child("experience").getRef().setValue(experience);
+                                    snapshot.child(String.valueOf(doctor.getPhone())).child("country").getRef().setValue(country);
                                     if (materialDialog.isShowing()) {
                                         materialDialog.dismiss();
                                     }
                                     Toast.makeText(EditDoctorProfileActivity.this,"Profile updated successfully.", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(EditDoctorProfileActivity.this, DoctorDashboardActivity.class);
                                     startActivity(intent);
+
                                 }else {
                                     Log.d("Could not find doctor"," with id "+doctor.getIdNumber());
                                     if (materialDialog.isShowing()) {
@@ -116,17 +117,14 @@ public class EditDoctorProfileActivity extends AppCompatActivity  {
                                     }
                                     Toast.makeText(EditDoctorProfileActivity.this,"Error contact support", Toast.LENGTH_LONG).show();
                                 }
-
                             }
 
                             @Override
                             public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
                             }
                         });
                     }
         });
-
     }
 
     // validating user id

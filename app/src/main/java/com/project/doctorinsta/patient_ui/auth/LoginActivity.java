@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                 login(email,pass);
             }
         });
-        register.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), RegisterActivity.class)));
+        register.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
     }
 
 

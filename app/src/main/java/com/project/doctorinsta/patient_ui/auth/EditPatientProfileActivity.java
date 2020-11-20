@@ -79,30 +79,26 @@ public class EditPatientProfileActivity extends AppCompatActivity  {
                             @Override
                             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                 if(snapshot.exists() ){
-                                    String email =snapshot.child(String.valueOf(patient.getPhone())).child("email").getValue(String.class);
-                                    if(email!=null && email.equalsIgnoreCase(patient.getEmail())){
-                                        Log.d("found doc"," {}, "+snapshot.toString());
-                                        snapshot.child(String.valueOf(patient.getPhone())).child("firstname").getRef().setValue(firstname);
-                                        snapshot.child(String.valueOf(patient.getPhone())).child("lastname").getRef().setValue(lastname);
-                                        snapshot.child(String.valueOf(patient.getPhone())).child("phone").getRef().setValue(phone);
-                                        snapshot.child(String.valueOf(patient.getPhone())).child("address").getRef().setValue(address);
-                                        snapshot.child(String.valueOf(patient.getPhone())).child("city").getRef().setValue(city);
-                                        snapshot.child(String.valueOf(patient.getPhone())).child("country").getRef().setValue(country);
-                                        if (materialDialog.isShowing()) {
-                                            materialDialog.dismiss();
-                                        }
-                                        Toast.makeText(EditPatientProfileActivity.this,"Profile updated successfully.", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(EditPatientProfileActivity.this, DoctorDashboardActivity.class);
-                                        startActivity(intent);
+                                    Log.d("found doc"," {}, "+snapshot.toString());
+                                    snapshot.child(String.valueOf(patient.getPhone())).child("firstname").getRef().setValue(firstname);
+                                    snapshot.child(String.valueOf(patient.getPhone())).child("lastname").getRef().setValue(lastname);
+                                    snapshot.child(String.valueOf(patient.getPhone())).child("phone").getRef().setValue(phone);
+                                    snapshot.child(String.valueOf(patient.getPhone())).child("address").getRef().setValue(address);
+                                    snapshot.child(String.valueOf(patient.getPhone())).child("city").getRef().setValue(city);
+                                    snapshot.child(String.valueOf(patient.getPhone())).child("country").getRef().setValue(country);
+                                    if (materialDialog.isShowing()) {
+                                        materialDialog.dismiss();
                                     }
-                                }else {
+                                    Toast.makeText(EditPatientProfileActivity.this,"Profile updated successfully.", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(EditPatientProfileActivity.this, DoctorDashboardActivity.class);
+                                    startActivity(intent);
+                                }else{
                                     Log.d("Could not find patient"," with id "+patient.getEmail());
                                     if (materialDialog.isShowing()) {
                                         materialDialog.dismiss();
                                     }
                                     Toast.makeText(EditPatientProfileActivity.this,"Error contact support", Toast.LENGTH_LONG).show();
                                 }
-
                             }
 
                             @Override

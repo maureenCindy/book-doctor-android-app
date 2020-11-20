@@ -28,8 +28,6 @@ public class SpecialityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public SpecialityAdapter(Context context, List<Specialisation> items) {
         this.specialisations = items;
         this.context = context;
-        layoutInflater = LayoutInflater.from(context);
-
     }
 
     @Override

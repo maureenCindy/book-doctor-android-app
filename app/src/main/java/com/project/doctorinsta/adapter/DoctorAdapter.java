@@ -27,8 +27,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public DoctorAdapter(Context context, List<Doctor> items) {
         this.doctors = items;
         this.context = context;
-        layoutInflater = LayoutInflater.from(this.context);
-
     }
 
     @Override

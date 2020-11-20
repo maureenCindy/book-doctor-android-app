@@ -23,8 +23,6 @@ public class BookingsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public BookingsAdapter(Context context, List<BookingInfo> items) {
         this.bookings = items;
         this.context = context;
-        layoutInflater = LayoutInflater.from(this.context);
-
     }
 
     @Override

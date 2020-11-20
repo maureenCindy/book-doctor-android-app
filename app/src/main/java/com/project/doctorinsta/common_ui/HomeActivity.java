@@ -20,32 +20,32 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        sharedPrefs = SharedPrefs.getInstance(getApplicationContext());
+        sharedPrefs = SharedPrefs.getInstance(HomeActivity.this);
         findViewById(R.id.btnDoctor).setOnClickListener(view -> {
             if(sharedPrefs.getBooleanValue("isLoggedIn") &&
                     sharedPrefs.getValue("userType").equalsIgnoreCase("doctor")){
                 //todo doctor's dash board
-                startActivity(new Intent(getApplicationContext(), DoctorDashboardActivity.class));
+                startActivity(new Intent(HomeActivity.this, DoctorDashboardActivity.class));
                 finish();
             }else{
                 //todo doctor's pass userType == doctor so that we reuse the login and register pages
-                startActivity(new Intent(getApplicationContext(), DoctorLoginActivity.class));
+                startActivity(new Intent(HomeActivity.this, DoctorLoginActivity.class));
                 finish();
             }
         });
         findViewById(R.id.btnPatient).setOnClickListener(view -> {
             if(sharedPrefs.getBooleanValue("isLoggedIn") &&
                     sharedPrefs.getValue("userType").equalsIgnoreCase("patient")){
-                startActivity(new Intent(getApplicationContext(), PatientDashboardActivity.class));
+                startActivity(new Intent(HomeActivity.this, PatientDashboardActivity.class));
                 finish();
             }else{
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                 finish();
             }
         });
 
         findViewById(R.id.tvForgotPasswordLink).setOnClickListener(v->{
-            startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
+            startActivity(new Intent(HomeActivity.this, ForgotPasswordActivity.class));
             finish();
         });
     }

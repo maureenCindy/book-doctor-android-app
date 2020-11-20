@@ -91,7 +91,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         LatLng loc = new LatLng(latitude, longitude);
                      Marker mItem =   mMap.addMarker(new MarkerOptions()
                                 .position(loc)
-                                .title(getSpecialityById(doctor.getSpecialtyIdNumber()) + "," +
+                                .title(getSpecialityById(doctor.getSpecialtyIdNumber()) + ", " +
                                         doctor.getAddress()));
                      mItem.setTag(doctor);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
@@ -128,36 +128,5 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return "unknown";
     }
 
-    private List<Doctor> getDummyDocs(){
-        List<Doctor>  doctors = new ArrayList<>();
-        Doctor doctor = new Doctor();
-        doctor.setCountry("Zimbabwe");
-        doctor.setCity("Harare");
-        doctor.setSpecialtyIdNumber((long) 1);
-        doctor.setAddress("122 Lomagundi Road, Emerald Hill");
 
-        Doctor doctor2 = new Doctor();
-        doctor2.setSpecialtyIdNumber((long) 2);
-        doctor2.setCountry("Zimbabwe");
-        doctor2.setCity("Bulawayo");
-        doctor2.setAddress("4781 Magwegwe West");
-
-        Doctor doctor3 = new Doctor();
-        doctor3.setCountry("United States");
-        doctor3.setSpecialtyIdNumber((long) 3);
-        doctor3.setCity("maryville");
-        doctor3.setAddress("1121 N College drive");
-
-        Doctor doctor4 = new Doctor();
-        doctor4.setSpecialtyIdNumber((long) 4);
-        doctor4.setCountry("United States");
-        doctor4.setCity("Missouri");
-        doctor4.setAddress("1121 North College Drive");
-
-        doctors.add(doctor);
-        doctors.add(doctor2);
-        doctors.add(doctor3);
-        doctors.add(doctor4);
-        return doctors;
-    }
 }

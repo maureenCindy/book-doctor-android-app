@@ -177,7 +177,7 @@ public class BookingFragment extends Fragment {
                                     linearLayoutManager = new LinearLayoutManager(getActivity(),
                                             LinearLayoutManager.VERTICAL, false);
                                     recyclerView.setLayoutManager(linearLayoutManager);
-                                    bookingsAdapter = new PatientBookingsAdapter(getContext(), bookings);
+                                    bookingsAdapter = new PatientBookingsAdapter(getActivity(), bookings);
                                     recyclerView.setAdapter(bookingsAdapter);
                                 }
 

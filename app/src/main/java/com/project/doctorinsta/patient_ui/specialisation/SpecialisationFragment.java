@@ -1,8 +1,6 @@
 package com.project.doctorinsta.patient_ui.specialisation;
 
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,9 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +23,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.project.doctorinsta.R;
 import com.project.doctorinsta.adapter.SpecialityAdapter;
-import com.project.doctorinsta.common_ui.HomeActivity;
 import com.project.doctorinsta.data.Doctor;
 import com.project.doctorinsta.data.Specialisation;
 import com.project.doctorinsta.patient_ui.maps.MapsActivity;
@@ -36,7 +30,6 @@ import com.project.doctorinsta.utils.SharedPrefs;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
